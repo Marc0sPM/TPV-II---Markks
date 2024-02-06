@@ -57,6 +57,7 @@ void Game::init() {
 
 	fighter_->addComponent(new ImageRenderer(&sdlutils().images().at("fighter")));
 	fighter_->addComponent(new FighterCrtlComponent());
+	fighter_->addComponent(new SimpleMove()); 
 	objs_.push_back(fighter_);
 
 //	// the ball

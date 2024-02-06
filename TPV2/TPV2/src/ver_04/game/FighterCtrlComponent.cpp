@@ -6,7 +6,10 @@
 FighterCrtlComponent::FighterCrtlComponent() :
 		right_(SDLK_RIGHT),
 		left_(SDLK_LEFT),
-		rotation_(5.0f)
+		up_(SDLK_UP),
+		rotation_(5.0f),
+		thrust_(0.2f),
+		speedLimit_(3.0f)
 {
 }
 
@@ -22,5 +25,17 @@ void FighterCrtlComponent::handleInput(Container* o) {
 		} else if (ihdlr.isKeyDown(left_)) {
 			o->setRotation(o->getRotation() - rotation_);
 		}
+		if (ihdlr.isKeyDown(up_)) {
+			Vector2D newVel;
+			newVel = o->getVel() + Vector2D(0, -1).rotate(rotation_) * thrust_;
+
+			if (newVel.magnitude()< speedLimit_) {
+			o->getVel().set(newVel);
+			}
+			else {
+				o->getVel().set(newVel.normalize() * speedLimit_);
+			}
+		}
 	}
+	
 }

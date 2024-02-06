@@ -12,6 +12,9 @@ public:
 private:
 	SDL_Keycode right_;
 	SDL_Keycode left_;
+	SDL_Keycode up_;
 	float rotation_;
+	float thrust_;
+	float speedLimit_;
 
 };
