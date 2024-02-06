@@ -10,7 +10,7 @@
 class GameObject {
 public:
 	GameObject() :
-			pos_(), vel_(), width_(), height_(), rot_(){
+			pos_(), vel_(), width_(), height_(), rot_(0.0f){
 	}
 	virtual ~GameObject() {
 	}

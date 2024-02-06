@@ -44,6 +44,7 @@
     <ClInclude Include="src\ver_04\game\Component.h" />
     <ClInclude Include="src\ver_04\game\Container.h" />
     <ClInclude Include="src\ver_04\game\EmptyRectangleRenderer.h" />
+    <ClInclude Include="src\ver_04\game\FighterCtrlComponent.h" />
     <ClInclude Include="src\ver_04\game\Game.h" />
     <ClInclude Include="src\ver_04\game\GameCtrl.h" />
     <ClInclude Include="src\ver_04\game\GameManager.h" />
@@ -75,6 +76,7 @@
     <ClCompile Include="src\ver_04\game\BounceOnBorder.cpp" />
     <ClCompile Include="src\ver_04\game\Containter.cpp" />
     <ClCompile Include="src\ver_04\game\EmptyRectangleRenderer.cpp" />
+    <ClCompile Include="src\ver_04\game\FighterCtrlComponent.cpp" />
     <ClCompile Include="src\ver_04\game\Game.cpp" />
     <ClCompile Include="src\ver_04\game\GameCtrl.cpp" />
     <ClCompile Include="src\ver_04\game\GameManager.cpp" />

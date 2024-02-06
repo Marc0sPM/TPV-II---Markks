@@ -20,6 +20,7 @@
 #include "ScoreRenderer.h"
 #include "SimpleMove.h"
 #include "StopOnBorder.h"
+#include "FighterCtrlComponent.h"
 
 Game::Game() :
 		/*gm_(nullptr), //
@@ -55,7 +56,7 @@ void Game::init() {
 				sdlutils().height() / 2 - fighter_->getHeight() / 2 );
 
 	fighter_->addComponent(new ImageRenderer(&sdlutils().images().at("fighter")));
-
+	fighter_->addComponent(new FighterCrtlComponent());
 	objs_.push_back(fighter_);
 
 //	// the ball

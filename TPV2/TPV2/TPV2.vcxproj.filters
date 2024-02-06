@@ -159,6 +159,9 @@
     <ClInclude Include="src\ver_04\game\StopOnBorder.h">
       <Filter>Header Files\game</Filter>
     </ClInclude>
+    <ClInclude Include="src\ver_04\game\FighterCtrlComponent.h">
+      <Filter>Header Files\game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\json\JSONValue.cpp">
@@ -234,6 +237,9 @@
       <Filter>Source Files\game</Filter>
     </ClCompile>
     <ClCompile Include="src\ver_04\game\StopOnBorder.cpp">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ver_04\game\FighterCtrlComponent.cpp">
       <Filter>Source Files\game</Filter>
     </ClCompile>
   </ItemGroup>
