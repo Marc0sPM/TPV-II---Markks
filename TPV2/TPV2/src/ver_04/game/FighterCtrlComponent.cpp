@@ -20,11 +20,12 @@ void FighterCrtlComponent::handleInput(Container* o) {
 	auto &ihdlr = ih();
 
 	if (ihdlr.keyDownEvent()) {
-		if (ihdlr.isKeyDown(right_)) {
+		if (ihdlr.isKeyDown(right_)) { // Rotate to right
 			o->setRotation(o->getRotation() + rotation_);
-		} else if (ihdlr.isKeyDown(left_)) {
+		} else if (ihdlr.isKeyDown(left_)) { // Rotate to left
 			o->setRotation(o->getRotation() - rotation_);
 		}
+		//Move towards
 		if (ihdlr.isKeyDown(up_)) {
 			Vector2D newVel;
 			newVel = o->getVel() + Vector2D(0, -1).rotate(rotation_) * thrust_;
