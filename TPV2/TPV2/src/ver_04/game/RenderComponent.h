@@ -11,6 +11,6 @@ public:
 	}
 	virtual ~RenderComponent() {
 	}
-	virtual void render(Container *o) = 0;
+	virtual void render(Container *o, float r) = 0;
 };
 

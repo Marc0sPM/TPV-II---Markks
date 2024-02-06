@@ -31,7 +31,7 @@ void Container::update() {
 
 void Container::render() {
 	for (auto rc : rc_)
-		rc->render(this);
+		rc->render(this, this->getRotation());
 }
 
 void Container::handleInput() {
