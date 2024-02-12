@@ -1,6 +1,6 @@
 // This file is part of the course TPV2@UCM - Samir Genaim
 
-#include "../game/ecs/Manager.h"
+#include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
 #include "../sdlutils/SDLUtils.h"
 #include "GameState.h"

@@ -12,7 +12,7 @@
 #include "../components/RectangleViewer.h"
 #include "../components/StopOnBorders.h"
 #include "../components/Transform.h"
-#include "../game/ecs/Manager.h"
+#include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../utils/Vector2D.h"

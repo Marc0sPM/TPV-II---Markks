@@ -3,7 +3,7 @@
 #pragma once
 #include <SDL_scancode.h>
 
-#include "../game/ecs/Component.h"
+#include "../ecs/Component.h"
 
 class Transform;
 

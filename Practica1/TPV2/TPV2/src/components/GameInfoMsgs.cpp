@@ -2,7 +2,7 @@
 
 #include "GameInfoMsgs.h"
 
-#include "../game/ecs/Manager.h"
+#include "../ecs/Manager.h"
 #include "../sdlutils/SDLUtils.h"
 #include "GameState.h"
 

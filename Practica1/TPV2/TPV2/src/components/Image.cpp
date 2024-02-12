@@ -4,7 +4,7 @@
 
 #include <cassert>
 
-#include "../game/ecs/Manager.h"
+#include "../ecs/Manager.h"
 #include "../sdlutils/macros.h"
 #include "../sdlutils/Texture.h"
 #include "Transform.h"

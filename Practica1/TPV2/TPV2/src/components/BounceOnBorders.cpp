@@ -3,7 +3,7 @@
 #include "BounceOnBorders.h"
 
 #include <cassert>
-#include "../game/ecs/Manager.h"
+#include "../ecs/Manager.h"
 #include "../sdlutils/SDLUtils.h"
 #include "Transform.h"
 

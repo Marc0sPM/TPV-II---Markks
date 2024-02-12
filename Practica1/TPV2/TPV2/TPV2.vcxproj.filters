@@ -31,23 +31,23 @@
     <Filter Include="Source Files\json">
       <UniqueIdentifier>{f050c7fb-d995-4366-9eaf-e78d399a13f9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\components">
-      <UniqueIdentifier>{77d5e61d-aea7-4879-a9c3-791ab8bb18e7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\game">
-      <UniqueIdentifier>{de36b2f8-dde3-46ba-a340-b49f971c803e}</UniqueIdentifier>
+      <UniqueIdentifier>{e89ea596-47c3-4f32-896e-3e3c46e67a5f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\game">
-      <UniqueIdentifier>{c69d4a7e-1e22-47db-8d62-faa498eaacd2}</UniqueIdentifier>
+      <UniqueIdentifier>{30050960-7807-4b84-a3fa-7c239ff5ad11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\components">
+      <UniqueIdentifier>{e6e3396a-b7bc-496d-9f3e-c9d420a7299f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\components">
-      <UniqueIdentifier>{2539b833-c912-4e30-9aa1-2915cc060c62}</UniqueIdentifier>
+      <UniqueIdentifier>{f9d5d91c-21bf-4701-b114-90677da3e886}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\ecs">
-      <UniqueIdentifier>{ea1230be-0e8d-4f48-a351-3f04f1022660}</UniqueIdentifier>
+      <UniqueIdentifier>{d15b6cde-af3d-4a38-a2e7-8ff1e9debb5b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\ecs">
-      <UniqueIdentifier>{ecf7cccc-2cfc-47ed-a28a-6bd204a325f9}</UniqueIdentifier>
+      <UniqueIdentifier>{23464ce5-9b0b-4061-9c35-ea02657979b1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -111,20 +111,8 @@
     <ClInclude Include="src\utils\ptr_iterator.h">
       <Filter>Header Files\utils</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\ecs\Component.h">
-      <Filter>Header Files\ecs</Filter>
-    </ClInclude>
-    <ClInclude Include="src\game\ecs\ecs.h">
-      <Filter>Header Files\ecs</Filter>
-    </ClInclude>
-    <ClInclude Include="src\game\ecs\ecs_defs_example.h">
-      <Filter>Header Files\ecs</Filter>
-    </ClInclude>
-    <ClInclude Include="src\game\ecs\Entity.h">
-      <Filter>Header Files\ecs</Filter>
-    </ClInclude>
-    <ClInclude Include="src\game\ecs\Manager.h">
-      <Filter>Header Files\ecs</Filter>
+    <ClInclude Include="src\game\Game.h">
+      <Filter>Header Files\game</Filter>
     </ClInclude>
     <ClInclude Include="src\components\BounceOnBorders.h">
       <Filter>Header Files\components</Filter>
@@ -156,8 +144,20 @@
     <ClInclude Include="src\components\Transform.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\Game.h">
-      <Filter>Header Files\game</Filter>
+    <ClInclude Include="src\ecs\Manager.h">
+      <Filter>Header Files\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ecs\Component.h">
+      <Filter>Header Files\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ecs\ecs.h">
+      <Filter>Header Files\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ecs\ecs_defs_example.h">
+      <Filter>Header Files\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ecs\Entity.h">
+      <Filter>Header Files\ecs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -188,11 +188,8 @@
     <ClCompile Include="src\sdlutils\Texture.cpp">
       <Filter>Source Files\sdlutil</Filter>
     </ClCompile>
-    <ClCompile Include="src\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\ecs\Manager.cpp">
-      <Filter>Source Files\ecs</Filter>
+    <ClCompile Include="src\game\Game.cpp">
+      <Filter>Source Files\game</Filter>
     </ClCompile>
     <ClCompile Include="src\components\BounceOnBorders.cpp">
       <Filter>Source Files\components</Filter>
@@ -204,6 +201,9 @@
       <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="src\components\Image.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="src\components\PaddleAICtrl.cpp">
@@ -221,8 +221,8 @@
     <ClCompile Include="src\components\StopOnBorders.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\Game.cpp">
-      <Filter>Source Files\game</Filter>
+    <ClCompile Include="src\ecs\Manager.cpp">
+      <Filter>Source Files\ecs</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

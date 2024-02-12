@@ -3,7 +3,7 @@
 #pragma once
 #include <array>
 
-#include "../game/ecs/Component.h"
+#include "../ecs/Component.h"
 
 class Transform;
 
