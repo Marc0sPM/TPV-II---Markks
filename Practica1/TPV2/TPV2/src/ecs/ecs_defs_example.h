@@ -26,5 +26,6 @@
 //
 #define _HDLRS_LIST_ \
     BALL, \
-	PADDLE
+	PADDLE, \
+	FIGHTER
 

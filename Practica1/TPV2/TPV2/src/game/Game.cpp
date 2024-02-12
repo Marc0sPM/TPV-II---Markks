@@ -44,9 +44,22 @@ void Game::init() {
 	// create the ball entity
 	//
 	auto ball = mngr_->addEntity();
+	auto fighter = mngr_->addEntity();
+
+
 	mngr_->setHandler(ecs::hdlr::BALL, ball);
+	mngr_->setHandler(ecs::hdlr::FIGHTER, fighter);
 
 	ballTr_ = mngr_->addComponent<Transform>(ball);
+	fighterTr_ = mngr_->addComponent<Transform>(fighter);
+
+	auto fighterSize = 50.0f;	
+	auto fighterX = (sdlutils().width() - fighterSize) / 2.0f;
+	auto fighterY = (sdlutils().height() - fighterSize) / 2.0f;
+	
+	fighterTr_->init(Vector2D(fighterX, fighterY), Vector2D(), fighterSize, fighterSize, 0.0f);
+	mngr_->addComponent<Image>(ball, &sdlutils().images().at("fighter"));
+
 	auto ballSize = 15.0f;
 	auto ballX = (sdlutils().width() - ballSize) / 2.0f;
 	auto ballY = (sdlutils().height() - ballSize) / 2.0f;
