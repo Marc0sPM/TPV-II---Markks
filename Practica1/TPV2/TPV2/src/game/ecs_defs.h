@@ -8,14 +8,9 @@
 #define _CMPS_LIST_ \
 	TRANSFORM, \
 	IMAGE, \
-	RECTANGLEVIEWER, \
-	PADDLEKBCTRL, \
-	PADDLMOUSECTRL, \
-	PADDLAICTRL, \
-	STOPONBORDER, \
-	BOUNCEONBORDER, \
 	GAMESTATE, \
-	GAMEINFOMSGS
+	GAMEINFOMSGS, \
+	DEACCELERATION
 
 // Groups list - must have at least one element
 //
@@ -25,6 +20,5 @@
 // Handlers list - must have at least one element
 //
 #define _HDLRS_LIST_ \
-	BALL, \
 	FIGHTER
 

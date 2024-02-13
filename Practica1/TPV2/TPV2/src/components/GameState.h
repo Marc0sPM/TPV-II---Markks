@@ -54,7 +54,7 @@ private:
 	std::array<unsigned int, 2> score_;
 	State state_;
 	const unsigned int maxScore_;
-	Transform *ballTr_;
+	Transform* fighterTr_;
 
 };
 

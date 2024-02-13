@@ -9,16 +9,18 @@ GameState::GameState() :
 		score_(), //
 		state_(NEWGAME), //
 		maxScore_(5), //
-		ballTr_(nullptr) {
+		fighterTr_(nullptr) {
 }
 
 GameState::~GameState() {
 }
 
 void GameState::initComponent() {
-	auto ball = mngr_->getHandler(ecs::hdlr::BALL);
-	ballTr_ = mngr_->getComponent<Transform>(ball);
-	assert(ballTr_ != nullptr);
+
+	auto fighter = mngr_->getHandler(ecs::hdlr::FIGHTER);
+	
+	fighterTr_ = mngr_->getComponent<Transform>(fighter);
+	assert(fighterTr_ != nullptr);
 }
 
 void GameState::update() {
@@ -65,17 +67,17 @@ void GameState::onBallExit(Side side) {
 }
 
 void GameState::resetBall() {
-	ballTr_->getPos().set(sdlutils().width() / 2 - 5,
+	/*ballTr_->getPos().set(sdlutils().width() / 2 - 5,
 			sdlutils().height() / 2 - 5);
-	ballTr_->getVel().set(0, 0);
+	ballTr_->getVel().set(0, 0);*/
 }
 
 void GameState::moveBall() {
-	auto &r = sdlutils().rand();
+	//auto &r = sdlutils().rand();
 
-	int dx = 1 - 2 * r.nextInt(0, 2); // 1 or -1
-	int dy = 1 - 2 * r.nextInt(0, 2); // 1 or -1
+	//int dx = 1 - 2 * r.nextInt(0, 2); // 1 or -1
+	//int dy = 1 - 2 * r.nextInt(0, 2); // 1 or -1
 
-	Vector2D v(dx * r.nextInt(2, 7), dy * r.nextInt(2, 7));
-	ballTr_->getVel().set(v.normalize() * 2);
+	//Vector2D v(dx * r.nextInt(2, 7), dy * r.nextInt(2, 7));
+	//ballTr_->getVel().set(v.normalize() * 2);
 }
