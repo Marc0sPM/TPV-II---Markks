@@ -22,6 +22,7 @@
     <ClInclude Include="src\components\DeAcceleration.h" />
     <ClInclude Include="src\components\GameInfoMsgs.h" />
     <ClInclude Include="src\components\GameState.h" />
+    <ClInclude Include="src\components\Health.h" />
     <ClInclude Include="src\components\Image.h" />
     <ClInclude Include="src\components\Transform.h" />
     <ClInclude Include="src\ecs\Component.h" />
@@ -55,6 +56,7 @@
     <ClCompile Include="src\components\DeAcceleration.cpp" />
     <ClCompile Include="src\components\GameInfoMsgs.cpp" />
     <ClCompile Include="src\components\GameState.cpp" />
+    <ClCompile Include="src\components\Health.cpp" />
     <ClCompile Include="src\components\Image.cpp" />
     <ClCompile Include="src\ecs\Manager.cpp" />
     <ClCompile Include="src\game\Game.cpp" />

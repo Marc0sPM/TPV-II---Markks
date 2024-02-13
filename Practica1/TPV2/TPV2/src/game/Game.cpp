@@ -37,6 +37,12 @@ void Game::init() {
 	SDLUtils::init("Ping Pong", 800, 600,
 			"resources/config/pingpong.resources.json");
 
+	/*-----------------------
+
+		CAMBIAR LA CONFIG DE RESOURCES A ASTEROID
+
+	-----------------------*/
+
 	sdlutils().hideCursor();
 
 	// Create the manager

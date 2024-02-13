@@ -10,7 +10,8 @@
 	IMAGE, \
 	GAMESTATE, \
 	GAMEINFOMSGS, \
-	DEACCELERATION
+	DEACCELERATION, \
+	HEALTH
 
 // Groups list - must have at least one element
 //

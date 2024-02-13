@@ -17,7 +17,7 @@ private:
 	Transform* tr_;
 
 	//Deacceleration factor
-	float deAcFactor_ = 0.995f;
+	const float deAcFactor_ = 0.995f;
 	
 };
 
