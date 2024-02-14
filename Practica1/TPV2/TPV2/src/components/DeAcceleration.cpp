@@ -10,7 +10,6 @@ DeAcceleration::DeAcceleration() :
 }
 
 DeAcceleration::~DeAcceleration() {
-
 }
 
 void DeAcceleration::initComponent() {

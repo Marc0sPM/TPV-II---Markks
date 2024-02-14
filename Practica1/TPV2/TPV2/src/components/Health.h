@@ -1,6 +1,8 @@
 #pragma once
 #include "../ecs/Component.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../sdlutils/Texture.h"
+
 class Image;
 
 class Transform;
@@ -15,6 +17,7 @@ public:
 	virtual ~Health();
 	void initComponent() override;
 	void update()override;
+	void render() override;
 
 	inline void resetLifes() {
 		currentLifes_ = maxLifes_;
@@ -27,12 +30,8 @@ public:
 	}
 
 private:
-	
-	Vector2D* initPos_;
-	//Deacceleration factor
 	const int maxLifes_ = 3;
 	int currentLifes_;
-	Image* img_;
 };
 
 

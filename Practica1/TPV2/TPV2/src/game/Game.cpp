@@ -12,6 +12,7 @@
 //#include "../components/RectangleViewer.h"
 //#include "../components/StopOnBorders.h"
 #include "../components/DeAcceleration.h"
+#include "../components/Health.h"
 #include "../components/Transform.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
@@ -64,6 +65,7 @@ void Game::init() {
 	fighterTr_->init(Vector2D(fighterX, fighterY), Vector2D(0.0f, -2.0f), fighterSize, fighterSize, 0.0f);
 	mngr_->addComponent<Image>(fighter, &sdlutils().images().at("fighter"));
 	mngr_->addComponent<DeAcceleration>(fighter);
+	mngr_->addComponent<Health>(fighter);
 
 
 	
