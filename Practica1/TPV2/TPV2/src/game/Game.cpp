@@ -13,6 +13,7 @@
 //#include "../components/StopOnBorders.h"
 #include "../components/DeAcceleration.h"
 #include "../components/Health.h"
+#include "../components/FighterCtrl.h"
 #include "../components/Transform.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
@@ -66,6 +67,7 @@ void Game::init() {
 	mngr_->addComponent<Image>(fighter, &sdlutils().images().at("fighter"));
 	mngr_->addComponent<DeAcceleration>(fighter);
 	mngr_->addComponent<Health>(fighter);
+	mngr_->addComponent<FighterCtrl>(fighter);
 
 
 	

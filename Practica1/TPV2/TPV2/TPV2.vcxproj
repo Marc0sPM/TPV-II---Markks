@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\DeAcceleration.h" />
+    <ClInclude Include="src\components\FighterCtrl.h" />
     <ClInclude Include="src\components\GameInfoMsgs.h" />
     <ClInclude Include="src\components\GameState.h" />
     <ClInclude Include="src\components\Health.h" />
@@ -54,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\components\DeAcceleration.cpp" />
+    <ClCompile Include="src\components\FighterCtrl.cpp" />
     <ClCompile Include="src\components\GameInfoMsgs.cpp" />
     <ClCompile Include="src\components\GameState.cpp" />
     <ClCompile Include="src\components\Health.cpp" />

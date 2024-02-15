@@ -11,7 +11,8 @@
 	GAMESTATE, \
 	GAMEINFOMSGS, \
 	DEACCELERATION, \
-	HEALTH
+	HEALTH, \
+	FIGHTERCTRL
 
 // Groups list - must have at least one element
 //
