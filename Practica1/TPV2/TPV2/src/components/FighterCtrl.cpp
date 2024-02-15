@@ -38,9 +38,7 @@ void FighterCtrl::update(){
 		}
 
 		if (ihdlr.isKeyDown(up_)) {
-
-			//acelera
-
+			accFighter();
 		}
 	}
 }
@@ -50,4 +48,10 @@ void FighterCtrl::calcVel(float rad) {
 	
 	vel.setX(vel.getX() * cos(rad) - vel.getY() * sin(rad));
 	vel.setY(vel.getX() * sin(rad) + vel.getY() * cos(rad));
+}
+void FighterCtrl::accFighter() {
+	auto& vel = tr_->getVel();
+	float rad = tr_->getRot() * M_PI / 180;
+	vel.setX(sin(rad) * acceleration);
+	vel.setY(cos(rad) * -acceleration);
 }

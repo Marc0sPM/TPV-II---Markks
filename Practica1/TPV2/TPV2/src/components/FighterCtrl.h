@@ -23,13 +23,14 @@ public:
 
 private:
 	Transform* tr_;
-	const float rotFactor_ = 3.0f;
+	const float rotFactor_ = 5.0f;
+	const float acceleration = 3.0f;
 	SDL_Scancode right_;
 	SDL_Scancode left_;
 	SDL_Scancode up_;
 
 	void calcVel(float rad);
-
+	void accFighter();
 
 
 };
