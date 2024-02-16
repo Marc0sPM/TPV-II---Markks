@@ -21,7 +21,7 @@ void Gun::update(){
 	auto time = sdlutils().virtualTimer().currTime();
 	if (ihdlr.keyDownEvent() && ihdlr.isKeyDown(SDL_SCANCODE_S) && time - lastTimeShoot_ > shootTimeLimit_) {
 		//shoot()
-		std::cout << "shoot" << std::endl;
+		//reproducir sonido de disparo
 		lastTimeShoot_ = time;
 	}
 }
