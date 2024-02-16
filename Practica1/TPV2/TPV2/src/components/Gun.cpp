@@ -25,3 +25,6 @@ void Gun::update(){
 		lastTimeShoot_ = time;
 	}
 }
+
+void Gun::render() {
+}

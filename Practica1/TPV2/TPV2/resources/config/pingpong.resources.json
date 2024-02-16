@@ -8,7 +8,8 @@
   "images" : [
     { "id" : "tennis_ball", "file" : "resources/images/tennis_ball.png" },
     { "id" : "fighter", "file" : "resources/images/fighter.png" },
-    { "id" : "heart", "file" : "resources/images/heart1.png" }
+    { "id" : "heart", "file" : "resources/images/heart1.png" },
+    {"id" : "fire", "file" : "resources/images/fire.png" }
   ],
   
   "messages" : [
