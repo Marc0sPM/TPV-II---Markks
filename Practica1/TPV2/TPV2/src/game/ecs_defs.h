@@ -13,7 +13,8 @@
 	DEACCELERATION, \
 	HEALTH, \
 	FIGHTERCTRL, \
-	GUN
+	GUN, \
+	SHOWATOPPOSITESIDE
 
 // Groups list - must have at least one element
 //

@@ -2,19 +2,14 @@
 
 #include "Game.h"
 
-//#include "../components/BounceOnBorders.h"
 #include "../components/GameInfoMsgs.h"
 #include "../components/GameState.h"
 #include "../components/Image.h"
-//#include "../components/PaddleAICtrl.h"
-//#include "../components/PaddleKBCtrl.h"
-//#include "../components/PaddleMouseCtrl.h"
-//#include "../components/RectangleViewer.h"
-//#include "../components/StopOnBorders.h"
 #include "../components/DeAcceleration.h"
 #include "../components/Health.h"
 #include "../components/FighterCtrl.h"
 #include "../components/Gun.h"
+#include "../components/ShowAtOppositeSide.h"
 #include "../components/Transform.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
@@ -70,6 +65,7 @@ void Game::init() {
 	mngr_->addComponent<Health>(fighter);
 	mngr_->addComponent<FighterCtrl>(fighter);
 	mngr_->addComponent<Gun>(fighter);
+	mngr_->addComponent<ShowAtOppositeSide>(fighter);
 
 
 	
