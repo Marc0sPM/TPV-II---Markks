@@ -12,7 +12,8 @@
 	GAMEINFOMSGS, \
 	DEACCELERATION, \
 	HEALTH, \
-	FIGHTERCTRL
+	FIGHTERCTRL, \
+	GUN
 
 // Groups list - must have at least one element
 //

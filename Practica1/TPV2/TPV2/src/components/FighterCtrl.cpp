@@ -52,6 +52,6 @@ void FighterCtrl::calcVel(float rad) {
 void FighterCtrl::accFighter() {
 	auto& vel = tr_->getVel();
 	float rad = tr_->getRot() * M_PI / 180;
-	vel.setX(sin(rad) * acceleration);
-	vel.setY(cos(rad) * -acceleration);
+	vel.setX(sin(rad) * acceleration_);
+	vel.setY(cos(rad) * -acceleration_);
 }
