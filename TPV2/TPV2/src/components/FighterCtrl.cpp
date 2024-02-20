@@ -26,7 +26,7 @@ void FighterCtrl::update() {
 		tr_->setRot(tr_->getRot() + 1.0f);
 	} else if (ihdrl.isKeyDown(SDL_SCANCODE_LEFT)) {
 		tr_->setRot(tr_->getRot() - 1.0f);
-	} else if (ihdrl.isKeyDown(SDL_SCANCODE_UP)) {
+	} if (ihdrl.isKeyDown(SDL_SCANCODE_UP)) {
 		auto &vel = tr_->getVel();
 		vel = vel + Vector2D(0, -1).rotate(tr_->getRot()) * thrust_;
 		if (vel.magnitude() > limit_)
