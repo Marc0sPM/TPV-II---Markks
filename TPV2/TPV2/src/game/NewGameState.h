@@ -8,7 +8,6 @@
 class Texture;
 class InputHandler;
 class FighterFacade;
-
 class NewGameState: public GameState {
 public:
 	NewGameState(FighterFacade *fighter_mngr);
