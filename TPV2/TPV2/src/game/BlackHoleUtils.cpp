@@ -9,6 +9,7 @@
 #include "../components/ShowAtOpossiteSide.h"
 #include "../components/TowardsDestination.h"
 #include "../components/Transform.h"
+#include "..//components/RotationComponent.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/SDLUtils.h"
 #include "Game.h"
@@ -55,15 +56,15 @@ void BlackHoleUtils::generateBlackHole(const Vector2D& p) {
 	auto mngr = Game::instance()->getMngr();
 
 	int size = rand_.nextInt(30, 60);
-	auto a = mngr->addEntity(ecs::grp::BLACKHOLES);
+	auto b = mngr->addEntity(ecs::grp::BLACKHOLES);
 
 	auto fighter = mngr->getHandler(ecs::hdlr::FIGHTER);
 	auto fighterTR = mngr->getComponent<Transform>(fighter);
 	Vector2D position = p + fighterTR->getPos();
 
-	mngr->addComponent<Transform>(a, position, Vector2D(0,0), size, size, 0);
-
-	mngr->addComponent<Image>(a, //
+	mngr->addComponent<Transform>(b, position, Vector2D(0,0), size, size, 0);
+	mngr->addComponent<RotationComponent>(b);
+	mngr->addComponent<Image>(b, //
 		&sdlutils().images().at("black-hole"));
 }
 
