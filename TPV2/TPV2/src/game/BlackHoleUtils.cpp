@@ -38,9 +38,11 @@ void BlackHoleUtils::create_blackholes(int n) {
 	for (int i = 0; i < n; i++) {
 
 		int y = 0, x = 0;
-		
-		x = cos(rotation_) * radio;
-		y = sin(rotation_) * radio;
+
+		double radians_ = rotation_ * M_PI / 180.0;
+
+		x = cos(radians_) * radio;
+		y = sin(radians_) * radio;
 		
 		rotation_ += 360 / 6;
 		Vector2D p = Vector2D(x, y);
