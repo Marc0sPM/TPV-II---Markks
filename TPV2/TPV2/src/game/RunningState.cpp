@@ -88,6 +88,7 @@ void RunningState::checkCollisions() {
 	auto mngr = Game::instance()->getMngr();
 	auto fighter = mngr->getHandler(ecs::hdlr::FIGHTER);
 	auto &asteroids = mngr->getEntities(ecs::grp::ASTEROIDS);
+	auto& blackholes = mngr->getEntities(ecs::grp::BLACKHOLES);
 	auto fighterTR = mngr->getComponent<Transform>(fighter);
 	auto fighterGUN = mngr->getComponent<Gun>(fighter);
 
@@ -132,6 +133,54 @@ void RunningState::checkCollisions() {
 			}
 		}
 
+		// asteroid with blackholes
+		auto num_of_blackholes = blackholes.size();
+		for (auto i = 0u; i < num_of_blackholes; i++) {
+			auto b = blackholes[i];
+
+			if (!mngr->isAlive(b))
+				continue;
+
+			auto bTR = mngr->getComponent<Transform>(b);
+			if (Collisions::collidesWithRotation(
+				aTR->getPos(), //
+				aTR->getWidth(), //
+				aTR->getHeight(), //
+				aTR->getRot(), //
+				bTR->getPos(), //
+				bTR->getWidth(), //
+				bTR->getHeight(), //
+				bTR->getRot()
+
+
+			)) {
+				ast_mngr_->move_asteroid(a);
+				continue;
+			}
+		}
+
+	}
+	auto num_of_blackholes = blackholes.size();
+	for (auto i = 0u; i < num_of_blackholes; i++) {
+		auto b = blackholes[i];
+
+		if (!mngr->isAlive(b))
+			continue;
+		
+		// blackholes with fighter
+		auto bTR = mngr->getComponent<Transform>(b);
+		if (Collisions::collidesWithRotation(
+			fighterTR->getPos(), //
+			fighterTR->getWidth(), //
+			fighterTR->getHeight(), //
+			fighterTR->getRot(), //
+			bTR->getPos(), //
+			bTR->getWidth(), //
+			bTR->getHeight(), //
+			bTR->getRot())) {
+			onFigherDeath();
+			return;
+		}
 	}
 
 }
