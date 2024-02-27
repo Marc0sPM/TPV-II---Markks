@@ -53,6 +53,9 @@ void RunningState::update() {
 	for (auto a : asteroids) {
 		mngr->update(a);
 	}
+	for (auto b : blackholes) {
+		mngr->update(b);
+	}
 
 	// check collisions
 	checkCollisions();

@@ -7,6 +7,7 @@
 #include "../components/Image.h"
 #include "../components/ShowAtOpossiteSide.h"
 #include "../components/Transform.h"
+#include "../components/RotationComponent.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
 #include "../sdlutils/SDLUtils.h"
@@ -19,6 +20,7 @@
 #include "NewRoundState.h"
 #include "BlackHoleFacade.h"
 #include "BlackHoleUtils.h"
+
 
 #include "PausedState.h"
 #include "RunningState.h"
