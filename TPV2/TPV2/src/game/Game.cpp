@@ -20,7 +20,8 @@
 #include "NewRoundState.h"
 #include "BlackHoleFacade.h"
 #include "BlackHoleUtils.h"
-
+#include "MissileFacade.h"
+#include "Missileutils.h"
 
 #include "PausedState.h"
 #include "RunningState.h"
@@ -52,11 +53,12 @@ void Game::init() {
 	AsteroidsFacade *ast_facede = new AsteroidsUtils();
 	FighterFacade *fighter_facede = new FighterUtils();
 	BlackHoleFacade *blackhole_facade = new BlackHoleUtils();
-
+	MissileFacade* missile_facade = new MissileUtils();
+ 
 	fighter_facede->create_fighter();
 
 	paused_state_ = new PausedState();
-	runing_state_ = new RunningState(ast_facede, fighter_facede, blackhole_facade);
+	runing_state_ = new RunningState(ast_facede, fighter_facede, blackhole_facade, missile_facade);
 	newgame_state_ = new NewGameState(fighter_facede);
 	newround_state_ = new NewRoundState(ast_facede, fighter_facede, blackhole_facade);
 	gameover_state_ = new GameOverState();

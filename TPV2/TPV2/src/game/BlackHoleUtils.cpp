@@ -17,7 +17,8 @@
 
 BlackHoleUtils::BlackHoleUtils() :
 	rand_(sdlutils().rand()), width_(sdlutils().width()), height_(
-		sdlutils().height()) {
+		sdlutils().height()),
+		rotation_(0.0){
 }
 
 BlackHoleUtils::~BlackHoleUtils() {
@@ -44,7 +45,7 @@ void BlackHoleUtils::create_blackholes(int n) {
 		x = cos(radians_) * radio;
 		y = sin(radians_) * radio;
 		
-		rotation_ += 360 / 6;
+		rotation_ += 360 / n;
 		Vector2D p = Vector2D(x, y);
 		
 		generateBlackHole(p);

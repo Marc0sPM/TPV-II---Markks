@@ -26,6 +26,7 @@ private:
 	InputHandler &ihdlr;
 	AsteroidsFacade *ast_mngr_;
 	FighterFacade *fighter_mngr_;
-	BlackHoleFacade *blackhole_mngr_;
+	BlackHoleFacade* blackhole_mngr_;
+
 };
 

@@ -11,16 +11,19 @@
 #include "AsteroidsFacade.h"
 #include "FighterFacade.h"
 #include "BlackHoleFacade.h"
+#include "MissileFacade.h"
 
 #include "Game.h"
 
 RunningState::RunningState(AsteroidsFacade *ast_mngr,
-		FighterFacade *fighter_mngr, BlackHoleFacade *blackhole_mngr) :
+		FighterFacade *fighter_mngr, BlackHoleFacade *blackhole_mngr, MissileFacade* missile_mngr) :
 		ihdlr(ih()), //
 		ast_mngr_(ast_mngr), //
 		fighter_mngr_(fighter_mngr), //
-		blackhole_mngr_(blackhole_mngr),
-		lastTimeGeneratedAsteroids_() {
+		blackhole_mngr_(blackhole_mngr), //
+		missile_mngr_(missile_mngr), //
+		lastTimeGeneratedAsteroids_(), //
+		lastTimeGeneratedMissile_() {
 }
 
 RunningState::~RunningState() {
@@ -48,6 +51,7 @@ void RunningState::update() {
 	auto fighter = mngr->getHandler(ecs::hdlr::FIGHTER);
 	auto &asteroids = mngr->getEntities(ecs::grp::ASTEROIDS);
 	auto& blackholes = mngr->getEntities(ecs::grp::BLACKHOLES);
+	auto& missiles = mngr->getEntities(ecs::grp::MISSILES);
 	// update
 	mngr->update(fighter);
 	for (auto a : asteroids) {
@@ -55,6 +59,9 @@ void RunningState::update() {
 	}
 	for (auto b : blackholes) {
 		mngr->update(b);
+	}
+	for (auto m : missiles) {
+		mngr->update(m);
 	}
 
 	// check collisions
@@ -68,6 +75,9 @@ void RunningState::update() {
 	for (auto b : blackholes) {
 		mngr->render(b);
 	}
+	for (auto m : missiles) {
+		mngr->render(m);
+	}
 	mngr->render(fighter);
 	sdlutils().presentRenderer();
 
@@ -77,11 +87,17 @@ void RunningState::update() {
 		ast_mngr_->create_asteroids(1);
 		lastTimeGeneratedAsteroids_ = sdlutils().virtualTimer().currTime();
 	}
+	
+	if (sdlutils().virtualTimer().currTime() > lastTimeGeneratedMissile_ + 15000) {
+		missile_mngr_->create_missile();
+		lastTimeGeneratedMissile_ = sdlutils().virtualTimer().currTime();
+	}
 
 }
 
 void RunningState::enter() {
 	lastTimeGeneratedAsteroids_ = sdlutils().virtualTimer().currTime();
+	lastTimeGeneratedMissile_ = sdlutils().virtualTimer().currTime();
 }
 
 void RunningState::checkCollisions() {
