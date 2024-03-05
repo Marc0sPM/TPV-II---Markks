@@ -17,35 +17,40 @@ rnd_(sdlutils().rand()), width_(sdlutils().width()), height_(
 }
 
 void MissileUtils::create_missile() {
-	int velSize = rnd_.nextInt(1, 3);
+	int velSize = rnd_.nextInt(1, 4);
 	
 	//side
 	int x = 0, y = 0;
 	int side = rnd_.nextInt(0, 4);
-
+	//La direccion de la velocidad depende de la esquina en la que "spawnee" el misil
+	Vector2D v = Vector2D();
 	switch (side) {
 	case 0:
-		y = sdlutils().height() - 20;
-		x = 20;
+		x = 15;
+		y = sdlutils().height() - 40;
+		v = { sqrtf(velSize),-sqrtf(velSize) };
 		break;
 	case 1:
-		y = 20;
-		x = 20;
+		x = 0;
+		y = 0;
+		v = { sqrtf(velSize),sqrtf(velSize) };
 		break;
 	case 2:
-		y = 20;
-		x = sdlutils().width() - 20;
+		x = sdlutils().width() - 30 ;
+		y = 0;
+		v = { -sqrtf(velSize),sqrtf(velSize) };
 		break;
 	case 3:
-		y = sdlutils().height() - 20;
-		x = sdlutils().width() - 20;
+		x = sdlutils().width() - 30;
+		y = sdlutils().height() - 30;
+		v = { -sqrtf(velSize),-sqrtf(velSize)};
 		break;
 	default:
 		break;
 	}
 
 	Vector2D p = Vector2D(x, y);
-	Vector2D v = p.normalize() * (float)velSize;
+
 
 	generateMissile(p, v);
 }
@@ -54,14 +59,13 @@ void MissileUtils::generateMissile(const Vector2D& p, const Vector2D& v){
 	auto mngr = Game::instance()->getMngr();
 
 	auto m = mngr->addEntity(ecs::grp::MISSILES);
-	mngr->addComponent<Transform>(m, p, v, 
-		sdlutils().images().at("missile").width(), 
-		sdlutils().images().at("missile").height(), 0.0);
 	auto fighter = mngr->getHandler(ecs::hdlr::FIGHTER);
-	auto fighterTR = mngr->getComponent<Transform>(fighter);
-	mngr->addComponent<Follow>(m, fighterTR->getPos());
+	auto fighterTr = mngr->getComponent<Transform>(fighter);
+	auto mTr = mngr->addComponent<Transform>(m, p, v, 30,30 , 0.0f);
 
+	mngr->addComponent<Follow>(m, fighterTr->getPos());
 	mngr->addComponent<Image>(m, &sdlutils().images().at("missile"));
+
 }
 
 void MissileUtils::remove_all_missiles() {

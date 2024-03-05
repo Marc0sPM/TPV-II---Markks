@@ -29,4 +29,7 @@ void Follow::update() {
 	auto v = to_follow_ - pos;
 
 	vel = vel.rotate(vel.angle(v) > 0 ? 1.0f : -1.0f);
+	
+	tr_->setRot(Vector2D(0, -1).angle(vel));
+	
 }

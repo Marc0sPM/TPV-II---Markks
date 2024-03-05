@@ -91,13 +91,13 @@ void RunningState::update() {
 	if (sdlutils().virtualTimer().currTime() > lastTimeGeneratedMissile_ + 15000) {
 		missile_mngr_->create_missile();
 		lastTimeGeneratedMissile_ = sdlutils().virtualTimer().currTime();
+		//std::cout << "spawn missile" << std::endl;
 	}
 
 }
 
 void RunningState::enter() {
-	lastTimeGeneratedAsteroids_ = sdlutils().virtualTimer().currTime();
-	lastTimeGeneratedMissile_ = sdlutils().virtualTimer().currTime();
+	lastTimeGeneratedAsteroids_ = lastTimeGeneratedMissile_ = sdlutils().virtualTimer().currTime();
 }
 
 void RunningState::checkCollisions() {
@@ -116,18 +116,18 @@ void RunningState::checkCollisions() {
 
 		// asteroid with fighter
 		auto aTR = mngr->getComponent<Transform>(a);
-		if (Collisions::collidesWithRotation( //
-				fighterTR->getPos(), //
-				fighterTR->getWidth(), //
-				fighterTR->getHeight(), //
-				fighterTR->getRot(), //
-				aTR->getPos(), //
-				aTR->getWidth(), //
-				aTR->getHeight(), //
-				aTR->getRot())) {
-			onFigherDeath();
-			return;
-		}
+		//if (Collisions::collidesWithRotation( //
+		//		fighterTR->getPos(), //
+		//		fighterTR->getWidth(), //
+		//		fighterTR->getHeight(), //
+		//		fighterTR->getRot(), //
+		//		aTR->getPos(), //
+		//		aTR->getWidth(), //
+		//		aTR->getHeight(), //
+		//		aTR->getRot())) {
+		//	onFigherDeath();
+		//	return;
+		//}
 
 		// asteroid with bullets
 		for (Gun::Bullet &b : *fighterGUN) {
