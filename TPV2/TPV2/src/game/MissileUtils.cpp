@@ -7,6 +7,7 @@
 #include "../components/TowardsDestination.h"
 #include "../components/Transform.h"
 #include "..//components/RotationComponent.h"
+#include "../components/CheckLimits.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/SDLUtils.h"
 #include "Game.h"
@@ -65,7 +66,7 @@ void MissileUtils::generateMissile(const Vector2D& p, const Vector2D& v){
 
 	mngr->addComponent<Follow>(m, fighterTr->getPos());
 	mngr->addComponent<Image>(m, &sdlutils().images().at("missile"));
-
+	mngr->addComponent<CheckLimits>(m);
 }
 
 void MissileUtils::remove_all_missiles() {
@@ -75,4 +76,12 @@ void MissileUtils::remove_all_missiles() {
 	}
 	mngr->refresh();
 }
+
+void MissileUtils::remove_missile(ecs::entity_t m) {
+	auto mngr = Game::instance()->getMngr();
+	mngr->setAlive(m, false);
+	mngr->refresh();
+}
+
+
 

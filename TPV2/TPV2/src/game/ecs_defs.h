@@ -17,7 +17,8 @@
 	HEALTH, \
 	GUN, \
 	IMAGEWITHFRAMES, \
-	ROTATION
+	ROTATION, \
+	CHECKLIMITS
 
 
 // Groups list - must have at least one element

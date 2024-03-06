@@ -105,7 +105,8 @@ void RunningState::checkCollisions() {
 	auto fighter = mngr->getHandler(ecs::hdlr::FIGHTER);
 	auto &asteroids = mngr->getEntities(ecs::grp::ASTEROIDS);
 	auto& blackholes = mngr->getEntities(ecs::grp::BLACKHOLES);
-	auto fighterTR = mngr->getComponent<Transform>(fighter);
+	auto &missiles = mngr->getEntities(ecs::grp::MISSILES);
+	auto fighterTR = mngr->getComponent<Transform>(fighter); 
 	auto fighterGUN = mngr->getComponent<Gun>(fighter);
 
 	auto num_of_asteroids = asteroids.size();
@@ -116,18 +117,18 @@ void RunningState::checkCollisions() {
 
 		// asteroid with fighter
 		auto aTR = mngr->getComponent<Transform>(a);
-		//if (Collisions::collidesWithRotation( //
-		//		fighterTR->getPos(), //
-		//		fighterTR->getWidth(), //
-		//		fighterTR->getHeight(), //
-		//		fighterTR->getRot(), //
-		//		aTR->getPos(), //
-		//		aTR->getWidth(), //
-		//		aTR->getHeight(), //
-		//		aTR->getRot())) {
-		//	onFigherDeath();
-		//	return;
-		//}
+		if (Collisions::collidesWithRotation( //
+				fighterTR->getPos(), //
+				fighterTR->getWidth(), //
+				fighterTR->getHeight(), //
+				fighterTR->getRot(), //
+				aTR->getPos(), //
+				aTR->getWidth(), //
+				aTR->getHeight(), //
+				aTR->getRot())) {
+			onFigherDeath();
+			return;
+		}
 
 		// asteroid with bullets
 		for (Gun::Bullet &b : *fighterGUN) {
@@ -174,6 +175,7 @@ void RunningState::checkCollisions() {
 				continue;
 			}
 		}
+		
 
 	}
 	auto num_of_blackholes = blackholes.size();
@@ -196,6 +198,49 @@ void RunningState::checkCollisions() {
 			bTR->getRot())) {
 			onFigherDeath();
 			return;
+		}
+	}
+
+	auto num_of_missiles = missiles.size();
+	for (auto i = 0u; i < num_of_missiles; i++) {
+		auto m = missiles[i];
+
+		if (!mngr->isAlive(m))
+			continue;
+
+		// missiles with fighter
+		auto mTR = mngr->getComponent<Transform>(m);
+		if (Collisions::collidesWithRotation(
+			fighterTR->getPos(), //
+			fighterTR->getWidth(), //
+			fighterTR->getHeight(), //
+			fighterTR->getRot(), //
+			mTR->getPos(), //
+			mTR->getWidth(), //
+			mTR->getHeight(), //
+			mTR->getRot())) {
+			onFigherDeath();
+			return;
+		}
+
+		// missiles with bullets
+		for (Gun::Bullet& b : *fighterGUN) {
+			if (b.used) {
+				if (Collisions::collidesWithRotation( //
+					b.pos, //
+					b.width, //
+					b.height, //
+					b.rot, //
+					mTR->getPos(), //
+					mTR->getWidth(), //
+					mTR->getHeight(), //
+					mTR->getRot())) {
+					missile_mngr_->remove_missile(m);
+					b.used = false;
+					sdlutils().soundEffects().at("explosion").play();
+					continue;
+				}
+			}
 		}
 	}
 
