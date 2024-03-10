@@ -171,7 +171,7 @@ void RunningState::checkCollisions() {
 
 
 			)) {
-				ast_mngr_->move_asteroid(a);
+				ast_mngr_->move_asteroid(a, fighter);
 				continue;
 			}
 		}

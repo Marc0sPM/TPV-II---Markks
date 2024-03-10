@@ -126,35 +126,41 @@ void AsteroidsUtils::split_astroid(ecs::entity_t a) {
 		}
 	}
 }
-void AsteroidsUtils::move_asteroid(ecs::entity_t a) {
+void AsteroidsUtils::move_asteroid(ecs::entity_t a, ecs::entity_t b) {
 	int y = 0, x = 0;
 	int side = rand_.nextInt(0, 4);
-
-	switch (side) {
-	case 0:
-		y = sdlutils().height() - 20;
-		x = rand_.nextInt(0, width_);
-		break;
-	case 1:
-		y = 0;
-		x = rand_.nextInt(0, width_);
-		break;
-	case 2:
-		y = rand_.nextInt(0, height_);
-		x = 0;
-		break;
-	case 3:
-		y = rand_.nextInt(0, height_);
-		x = sdlutils().width() - 20;
-		break;
-	default:
-		break;
-	}
-
-	//Vector2D p = Vector2D(x, y);
 	auto mngr = Game::instance()->getMngr();
 	auto tr = mngr->getComponent<Transform>(a);
-	tr->getPos().setX(x);
-	tr->getPos().setY(y);
+	auto fTR_ = mngr->getComponent<Transform>(b);
+	do {
+		switch (side) {
+		case 0:
+			y = sdlutils().height() - 20;
+			x = rand_.nextInt(0, width_);
+			break;
+		case 1:
+			y = 0;
+			x = rand_.nextInt(0, width_);
+			break;
+		case 2:
+			y = rand_.nextInt(0, height_);
+			x = 0;
+			break;
+		case 3:
+			y = rand_.nextInt(0, height_);
+			x = sdlutils().width() - 20;
+			break;
+		default:
+			break;
+		}
+
+		
+		tr->getPos().setX(x);
+		tr->getPos().setY(y);
+	} while (tr->getPos() != fTR_->getPos());
+	
+
+	//Vector2D p = Vector2D(x, y);
+	
 	
 }

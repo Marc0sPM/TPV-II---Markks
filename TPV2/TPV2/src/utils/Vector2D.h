@@ -138,6 +138,11 @@ public:
 	inline bool inRange(float x0, float x2, float y0, float y1) {
 		return x_ >= x0 && x_ <= x2 && y_ >= y0 && y_ <= y1;
 	}
+
+	inline bool operator!=(const Vector2D &d) const {
+		return x_ == d.getX() && y_ == d.getY();
+	}
+
 private:
 	float x_;  // first coordinate
 	float y_;  // second coordinate
