@@ -37,5 +37,7 @@ struct Transform: public ecs::Component {
 	float width_;
 	float height_;
 	float rot_;
+
+	void draw();
 };
 

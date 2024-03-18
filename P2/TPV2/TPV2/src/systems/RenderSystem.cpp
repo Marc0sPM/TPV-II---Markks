@@ -3,6 +3,7 @@
 #include "RenderSystem.h"
 
 #include "../components/Image.h"
+#include "../components/ImageWithFrames.h"
 #include "../components/Transform.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/macros.h"
@@ -39,8 +40,8 @@ void RenderSystem::drawStars() {
 void RenderSystem::drawPacMan() {
 	auto e = mngr_->getHandler(ecs::hdlr::PACMAN);
 	auto tr = mngr_->getComponent<Transform>(e);
-	auto tex = mngr_->getComponent<Image>(e)->tex_;
-	draw(tr, tex);
+	mngr_->getComponent<ImageWithFrames>(e)->render();
+	//draw(tr, tex);
 
 }
 
@@ -67,8 +68,8 @@ void RenderSystem::drawMsgs() {
 }
 
 void RenderSystem::draw(Transform *tr, Texture *tex) {
-	SDL_Rect dest = build_sdlrect(tr->pos_, tr->width_, tr->height_);
+	/*SDL_Rect dest = build_sdlrect(tr->pos_, tr->width_, tr->height_);
 
 	assert(tex != nullptr);
-	tex->render(dest, tr->rot_);
+	tex->render(dest, tr->rot_);*/
 }
