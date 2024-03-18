@@ -53,15 +53,7 @@ void PacManSystem::update() {
 
 			pmTR_->vel_ = Vector2D(0.0f, -3.0f).rotate(pmTR_->rot_);
 		} else if (ihldr.isKeyDown(SDL_SCANCODE_DOWN)) { // decrease speed
-			// subtract 1.0f to the speed (respecting the limit 0.0f). Recall
-			// that speed is the length of the velocity vector
 			
-
-			// change the length of velocity vector to 'speed'. We need
-			// '.rotate(rot)' for the case in which the current speed is
-			// 0, so we rotate it to the same direction where the PacMan
-			// is looking
-			//
 			pmTR_->vel_ = Vector2D(0, 0).rotate(pmTR_->rot_);
 		}
 
