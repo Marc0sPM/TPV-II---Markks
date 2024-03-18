@@ -80,7 +80,7 @@ void PacManSystem::update() {
 
 	// check left/right borders
 	if (pmTR_->pos_.getX() < 0) {
-		pmTR_->pos_.setX(0.0f);
+		pmTR_->pos_.setX(0.1f);
 		pmTR_->vel_.set(0.0f, 0.0f);
 	} else if (pmTR_->pos_.getX() + pmTR_->width_ > sdlutils().width()) {
 		pmTR_->pos_.setX(sdlutils().width() - pmTR_->width_);
