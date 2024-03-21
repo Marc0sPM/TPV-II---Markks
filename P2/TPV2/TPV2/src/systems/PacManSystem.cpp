@@ -3,6 +3,7 @@
 #include "PacManSystem.h"
 
 #include "../components/Image.h"
+#include "../components/ImageWithFrames.h"
 #include "../components/Transform.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
@@ -26,7 +27,14 @@ void PacManSystem::initSystem() {
 	auto x = (sdlutils().width() - s) / 2.0f;
 	auto y = (sdlutils().height() - s) / 2.0f;
 	pmTR_->init(Vector2D(x, y), Vector2D(), s, s, 0.0f);
-	mngr_->addComponent<Image>(pacman, &sdlutils().images().at("pacman"));
+	//mngr_->addComponent<Image>(pacman, &sdlutils().images().at("pacman"));
+	mngr_->addComponent<ImageWithFrames>(pacman, &sdlutils().images().at("pacman"),
+		4, 1, //
+		0, 0, //
+		128, 128, //
+		0, 0, //
+		4, 1
+	);
 }
 
 void PacManSystem::update() {
@@ -64,7 +72,7 @@ void PacManSystem::update() {
 
 	// check left/right borders
 	if (pmTR_->pos_.getX() < 0) {
-		pmTR_->pos_.setX(0.0f);
+		pmTR_->pos_.setX(0.1f);
 		pmTR_->vel_.set(0.0f, 0.0f);
 	} else if (pmTR_->pos_.getX() + pmTR_->width_ > sdlutils().width()) {
 		pmTR_->pos_.setX(sdlutils().width() - pmTR_->width_);
