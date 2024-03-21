@@ -19,6 +19,7 @@ private:
 	void drawStars();
 	void drawPacMan();
 	void drawMsgs();
+	void drawGhost();
 	void draw(Transform *tr, Texture *tex);
 };
 

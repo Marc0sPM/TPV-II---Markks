@@ -9,7 +9,7 @@
 #include "../systems/GameCtrlSystem.h"
 #include "../systems/PacManSystem.h"
 #include "../systems/RenderSystem.h"
-#include "../systems/StarsSystem.h"
+#include "../systems/GhostSystem.h"
 #include "../utils/Vector2D.h"
 #include "../utils/Collisions.h"
 
@@ -19,7 +19,7 @@ Game::Game() :
 		mngr_(), //
 		pacmanSys_(), //
 		gameCtrlSys_(), //
-		startsSys_(), //
+		ghostSys_(), //
 		renderSys_(), //
 		collisionSys_() {
 
@@ -40,10 +40,10 @@ void Game::init() {
 
 	// add the systems
 	pacmanSys_ = mngr_->addSystem<PacManSystem>();
-	startsSys_ = mngr_->addSystem<StarsSystem>();
 	gameCtrlSys_ = mngr_->addSystem<GameCtrlSystem>();
 	renderSys_ = mngr_->addSystem<RenderSystem>();
 	collisionSys_ = mngr_->addSystem<CollisionsSystem>();
+	ghostSys_ = mngr_->addSystem<GhostSystem>();
 }
 
 void Game::start() {
@@ -66,10 +66,9 @@ void Game::start() {
 
 
 		pacmanSys_->update();
-		startsSys_->update();
 		gameCtrlSys_->update();
 		collisionSys_->update();
-
+		ghostSys_->update();
 		mngr_->refresh();
 
 		sdlutils().clearRenderer();

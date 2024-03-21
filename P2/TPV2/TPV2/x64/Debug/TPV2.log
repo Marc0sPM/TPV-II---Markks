@@ -1,13 +1,13 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(517,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
   GhostSystem.cpp
-  PacManSystem.cpp
 C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\ImageWithFrames.h(9,7): warning C4099: 'Transform': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
-  (compilando archivo de origen "src/systems/PacManSystem.cpp")
-  C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\PacManSystem.h(7,8):
+  (compilando archivo de origen "src/systems/GhostSystem.cpp")
+  C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\GhostSystem.h(4,8):
   vea la declaración de 'Transform'
   
+C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\GhostSystem.cpp(32,43): warning C4018: '>': no coinciden signed/unsigned
 C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(51,32): warning C4101: 'e': variable local sin referencia
-  (compilando archivo de origen "src/systems/PacManSystem.cpp")
+  (compilando archivo de origen "src/systems/GhostSystem.cpp")
   C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(51,32):
   el contexto de creación de instancias de la plantilla (el más antiguo primero) es
   	C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(199,30):
@@ -18,8 +18,7 @@ C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlut
           [
               T=Texture
           ]
-  		C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\PacManSystem.cpp(31,38):
-  		vea la primera referencia a “SDLUtils::map_access_wrapper<Texture>::at” en “PacManSystem::initSystem”
+  		C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\GhostSystem.cpp(82,38):
+  		vea la primera referencia a “SDLUtils::map_access_wrapper<Texture>::at” en “GhostSystem::addGhost”
   
-  Generando código...
   TPV2.vcxproj -> C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\bin\TPV2Debug.exe

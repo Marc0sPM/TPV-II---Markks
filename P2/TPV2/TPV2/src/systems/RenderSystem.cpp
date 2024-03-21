@@ -25,15 +25,23 @@ void RenderSystem::update() {
 	drawMsgs();
 	drawStars();
 	drawPacMan();
+	drawGhost();
 }
 
 void RenderSystem::drawStars() {
 	// draw stars
-	for (auto e : mngr_->getEntities(ecs::grp::STARS)) {
+	/*for (auto e : mngr_->getEntities(ecs::grp::STARS)) {
 
 		auto tr = mngr_->getComponent<Transform>(e);
 		auto tex = mngr_->getComponent<Image>(e)->tex_;
 		draw(tr, tex);
+	}*/
+}
+void RenderSystem::drawGhost() {
+	for (auto e : mngr_->getEntities(ecs::grp::GHOST)) {
+		//auto tr = mngr_->getComponent<Transform>(e);
+		mngr_->getComponent<ImageWithFrames>(e)->render();
+		//draw(tr, tex);
 	}
 }
 
