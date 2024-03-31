@@ -17,6 +17,11 @@ public:
 	void update() override;
 	void addGhost();
 private:
+	/// <summary>
+	/// Calcula el vector velocidad del ghost respecto a la posicion
+	/// del pacman y la establece en el transform del  ghost
+	/// </summary>
+	/// <param name="g">Ghost entity</param>
 	void calcVelFromPacman(ecs::entity_t g);
 
 	Transform* ghTR_;
