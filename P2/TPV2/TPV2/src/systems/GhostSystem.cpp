@@ -20,7 +20,7 @@ GhostSystem::~GhostSystem(){
 }
 
 void GhostSystem::initSystem(){
-
+	
 }
 
 void GhostSystem::recieve(const Message& m)
@@ -29,6 +29,7 @@ void GhostSystem::recieve(const Message& m)
 	case _m_ROUND_START:
 		lastTimeGeneratedGhost_ = 0;
 		lastTimeGotPacmanPos_ = 0;
+		addGhost();
 	}
 	
 }
@@ -42,12 +43,6 @@ void GhostSystem::update(){
 			calcVelFromPacman(g);
 		}
 		lastTimeGotPacmanPos_ = sdlutils().virtualTimer().currTime();
-	}
-	//cambiar animacion segun el movimiento del fantasma
-	if (ghosts.size() > 0) {
-		for (auto g : ghosts) {
-			calculateAnimDirection(g);
-		}
 	}
 	//generacion de fantasmas
 	if (sdlutils().virtualTimer().currTime() > lastTimeGeneratedGhost_ + 5000) {
@@ -67,23 +62,28 @@ void GhostSystem::addGhost()
 	//side
 	int x = 0, y = 0;
 	int side = rnd_.nextInt(0, 4);
+	Vector2D vel = {0.0f , 0.0f};
 
 	switch (side) {
 	case 0:
-		x = 15;
-		y = sdlutils().height() - 40;
+		x = 0;
+		y = sdlutils().height() - 50;
+		vel = { 1.0f, -1.0f };
 		break;
 	case 1:
 		x = 0;
 		y = 0;
+		vel = { 1.0f, 1.0f };
 		break;
 	case 2:
-		x = sdlutils().width() - 30;
+		x = sdlutils().width() - 50;
 		y = 0;
+		vel = { -1.0f, 1.0f };
 		break;
 	case 3:
-		x = sdlutils().width() - 30;
-		y = sdlutils().height() - 30;
+		x = sdlutils().width() - 50;
+		y = sdlutils().height() - 50;
+		vel = { -1.0f, -1.0f };
 		break;
 	default:
 		break;
@@ -93,41 +93,23 @@ void GhostSystem::addGhost()
 	auto g = mngr_->addEntity(ecs::grp::GHOST);
 	auto ghTR = mngr_->addComponent<Transform>(g);
 	auto s = 50.0f;
-	auto x2 = (sdlutils().width() - s) / 2.0f;
-	auto y2 = (sdlutils().height() - s) / 2.0f;
-	Vector2D p = Vector2D(x2, y2);
+
+	Vector2D p = Vector2D(x, y);
 
 
-	ghTR->init(p, Vector2D(1.0f, 1.0f), s, s, 0.0f);
+	ghTR->init(p, vel, s, s, 0.0f);
+
+	int color = rnd_.nextInt(0, 4);
 
 	mngr_->addComponent<ImageWithFrames>(g, &sdlutils().images().at("pacman"),
 		0, 0, //
 		0, 0, //
 		128, 128, //
-		0, 4, //
-		2, 1,
+		0, 4 + color, //
+		8, 1,
 		400
 	);
 
-}
-
-void GhostSystem::calculateAnimDirection(ecs::entity_t g)
-{
-	auto tr = mngr_->getComponent<Transform>(g);
-	auto iF = mngr_->getComponent<ImageWithFrames>(g);
-
-	if (tr->vel_.getX() > 0) {
-		iF->changeFrames(2);
-	}
-	else if (tr->vel_.getX() < 0) {
-		iF->changeFrames(6);
-	}
-	else if (tr->vel_.getY() > 0) {
-		iF->changeFrames(4);
-	}
-	else if (tr->vel_.getY() < 0) {
-		iF->changeFrames(0);
-	}
 }
 
 void GhostSystem::calcVelFromPacman(ecs::entity_t g)

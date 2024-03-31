@@ -17,7 +17,6 @@ public:
 	void update() override;
 	void addGhost();
 private:
-	void calculateAnimDirection(ecs::entity_t g);
 	void calcVelFromPacman(ecs::entity_t g);
 
 	Transform* ghTR_;
