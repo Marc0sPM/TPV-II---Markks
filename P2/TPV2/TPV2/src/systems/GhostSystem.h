@@ -1,6 +1,7 @@
 #pragma once
 #include "../ecs/System.h"
 
+
 struct Transform;
 class RandomNumberGenerator;
 
@@ -17,7 +18,10 @@ public:
 	void addGhost();
 private:
 	void calculateAnimDirection(ecs::entity_t g);
+	void calcVelFromPacman(ecs::entity_t g);
+
 	Transform* ghTR_;
 	int lastTimeGeneratedGhost_;
+	int lastTimeGotPacmanPos_;
 	RandomNumberGenerator& rnd_;
 };
