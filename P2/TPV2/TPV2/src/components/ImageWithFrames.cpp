@@ -11,7 +11,7 @@
 #include "Transform.h"
 
 ImageWithFrames::ImageWithFrames(Texture *tex, int cols, int rows, int x, int y,
-		int fW, int fH, int scol, int srow, int ncol, int nrow) :
+		int fW, int fH, int scol, int srow, int ncol, int nrow, Uint32 timeBetweenFrames) :
 		tex_(tex), //
 		tr_(nullptr), //
 		currFrameR_(0), //
@@ -24,6 +24,7 @@ ImageWithFrames::ImageWithFrames(Texture *tex, int cols, int rows, int x, int y,
 		scol_(scol), //
 		nrow_(nrow), //
 		ncol_(ncol), //
+		timeBetweenFrames_(timeBetweenFrames), //
 		lastFrameChange_(0)
 {
 }
@@ -37,7 +38,7 @@ void ImageWithFrames::initComponent() {
 }
 
 void ImageWithFrames::render() {
-	if (sdlutils().virtualTimer().currTime() > lastFrameChange_ + 50) {
+	if (sdlutils().virtualTimer().currTime() > lastFrameChange_ + timeBetweenFrames_) {
 		lastFrameChange_ = sdlutils().virtualTimer().currTime();
 		currFrameC_ = (currFrameC_ + 1) % ncol_;
 		if (currFrameC_ == 0)

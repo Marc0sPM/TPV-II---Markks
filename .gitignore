@@ -393,3 +393,7 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+*.obj
+*.obj
+*.db
+P2/TPV2/.vs/TPV2/v17/.suo

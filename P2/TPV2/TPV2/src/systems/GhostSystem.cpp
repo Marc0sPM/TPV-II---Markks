@@ -29,11 +29,16 @@ void GhostSystem::recieve(const Message& m)
 }
 
 void GhostSystem::update(){
-	if (sdlutils().virtualTimer().currTime() > lastTimeGeneratedGhost_ + 000) {
+	auto ghosts = mngr_->getEntities(ecs::grp::GHOST);
+	if (ghosts.size() > 0) {
+		for (auto g : ghosts) {
+			calculateAnimDirection(g);
+		}
+	}
+	if (sdlutils().virtualTimer().currTime() > lastTimeGeneratedGhost_ + 3000) {
 		// create ghost
 		
-		auto ghost = mngr_->getEntities(ecs::grp::GHOST);
-		if (ghost.size() < 10) {
+		if (ghosts.size() < 10) {
 			addGhost();
 		}
 		
@@ -83,8 +88,29 @@ void GhostSystem::addGhost()
 		0, 0, //
 		0, 0, //
 		128, 128, //
-		1, 4, //
-		1, 1
+		0, 4, //
+		2, 1,
+		400
 	);
+
+}
+
+void GhostSystem::calculateAnimDirection(ecs::entity_t g)
+{
+	auto tr = mngr_->getComponent<Transform>(g);
+	auto iF = mngr_->getComponent<ImageWithFrames>(g);
+
+	if (tr->vel_.getX() > 0) {
+		iF->changeFrames(2);
+	}
+	else if (tr->vel_.getX() < 0) {
+		iF->changeFrames(6);
+	}
+	else if (tr->vel_.getY() > 0) {
+		iF->changeFrames(4);
+	}
+	else if (tr->vel_.getY() < 0) {
+		iF->changeFrames(0);
+	}
 
 }

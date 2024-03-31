@@ -16,6 +16,7 @@ public:
 	void update() override;
 	void addGhost();
 private:
+	void calculateAnimDirection(ecs::entity_t g);
 	Transform* ghTR_;
 	int lastTimeGeneratedGhost_;
 	RandomNumberGenerator& rnd_;
