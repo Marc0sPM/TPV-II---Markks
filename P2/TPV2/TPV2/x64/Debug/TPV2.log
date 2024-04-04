@@ -1,4 +1,5 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(517,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
+<<<<<<< Updated upstream
   ImageWithFrames.cpp
 C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\Transform.h(8,8): warning C4099: 'Transform': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
   (compilando archivo de origen "src/components/ImageWithFrames.cpp")
@@ -80,4 +81,7 @@ C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlut
   
   Generando código...
   LINK : no se encontró C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\bin\TPV2Debug.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
+=======
+  CollisionsSystem.cpp
+>>>>>>> Stashed changes
   TPV2.vcxproj -> C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\bin\TPV2Debug.exe
