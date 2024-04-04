@@ -27,6 +27,12 @@ void FoodSystem::recieve(const Message& m)
 
 void FoodSystem::update()
 {
+	auto& fruits = mngr_->getEntities(ecs::grp::FOOD);
+	if (fruits.size() == 0) {
+		Message m;
+		m.id = _m_ROUND_OVER;
+		mngr_->send(m);
+	}
 }
 
 void FoodSystem::removeFruit(ecs::entity_t f) {

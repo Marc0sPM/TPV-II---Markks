@@ -121,14 +121,12 @@ void GhostSystem::addGhost()
 
 void GhostSystem::removeGhost(ecs::entity_t g) {
 	if (canDie) {
-		
+		mngr_->setAlive(g, false);
 	}
 	else {
 		Message m;
 		m.id = _m_ROUND_OVER;
 	}
-	mngr_->setAlive(g, false);
-	mngr_->refresh();
 }
 
 void GhostSystem::calcVelFromPacman(ecs::entity_t g)
