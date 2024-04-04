@@ -12,7 +12,8 @@ GhostSystem::GhostSystem() :
 	ghTR_(nullptr), //
 	rnd_(sdlutils().rand()), //
 	lastTimeGeneratedGhost_(), //
-	lastTimeGotPacmanPos_(0) {
+	lastTimeGotPacmanPos_(0), //
+	canDie(false) {
 
 }
 
@@ -30,6 +31,10 @@ void GhostSystem::recieve(const Message& m)
 		lastTimeGeneratedGhost_ = 0;
 		lastTimeGotPacmanPos_ = 0;
 		addGhost();
+		break;
+	case _m_PACMAN_GHOST_COLLISION:
+		
+		break;
 	}
 	
 }
@@ -47,7 +52,7 @@ void GhostSystem::update() {
 	}
 		//generacion de fantasmas
 		if (sdlutils().virtualTimer().currTime() > lastTimeGeneratedGhost_ + 5000) {
-			if (ghosts.size() < 10) {
+			if (ghosts.size() < 10 && !canDie) {
 				addGhost();
 			}
 			lastTimeGeneratedGhost_ = sdlutils().virtualTimer().currTime();
@@ -112,6 +117,17 @@ void GhostSystem::addGhost()
 		400
 	);
 
+}
+
+void GhostSystem::removeGhost(ecs::entity_t g) {
+	if (canDie) {
+		mngr_->setAlive(g, false);
+		mngr_->refresh();
+	}
+	else {
+		Message m;
+		m.id = _m_ROUND_OVER;
+	}
 }
 
 void GhostSystem::calcVelFromPacman(ecs::entity_t g)

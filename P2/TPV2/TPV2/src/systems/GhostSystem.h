@@ -16,6 +16,7 @@ public:
 	void recieve(const Message& m) override;
 	void update() override;
 	void addGhost();
+	void removeGhost(ecs::entity_t g);
 private:
 	/// <summary>
 	/// Calcula el vector velocidad del ghost respecto a la posicion
@@ -28,4 +29,5 @@ private:
 	int lastTimeGeneratedGhost_;
 	int lastTimeGotPacmanPos_;
 	RandomNumberGenerator& rnd_;
+	bool canDie;
 };

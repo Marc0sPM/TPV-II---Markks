@@ -26,6 +26,29 @@ void CollisionsSystem::update() {
 	auto pm = mngr_->getHandler(ecs::hdlr::PACMAN);
 	auto pTR = mngr_->getComponent<Transform>(pm);
 
+	auto &gh = mngr_->getEntities(ecs::grp::GHOST);
+
+
+	auto n = gh.size();
+	for (auto i = 0u; i < n; i++) {
+		auto g = gh[i];
+		if (mngr_->isAlive(g)) {
+			auto gTR = mngr_->getComponent<Transform>(g);
+
+			if (Collisions::collides(
+				pTR->pos_, pTR->width_, pTR->height_, //
+				gTR->pos_, gTR->width_, gTR->height_)) {
+
+				Message m;
+				m.id = _m_PACMAN_GHOST_COLLISION;
+				m.ghost = g;
+				mngr_->send(m);
+			}
+		}
+
+
+	}
+
 	// For safety, we traverse with a normal loop until the current size. In this
 	// particular case we could use a for-each loop since the list stars is not
 	// modified.
@@ -53,6 +76,6 @@ void CollisionsSystem::update() {
 	//		}
 	//	}
 	//}
-
+	
 }
 
