@@ -1,24 +1,13 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(517,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
-  ImageWithFrames.cpp
-C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\Transform.h(8,8): warning C4099: 'Transform': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-  (compilando archivo de origen "src/components/ImageWithFrames.cpp")
-  C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\Transform.h(8,8):
-  vea la declaración de 'Transform'
-  
-C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\ImageWithFrames.cpp(51,4): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\ImageWithFrames.cpp(50,72): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\ImageWithFrames.cpp(50,66): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\ImageWithFrames.cpp(50,43): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
   GhostSystem.cpp
 C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\ImageWithFrames.h(9,7): warning C4099: 'Transform': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
   (compilando archivo de origen "src/systems/GhostSystem.cpp")
   C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\GhostSystem.h(5,8):
   vea la declaración de 'Transform'
   
-C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\GhostSystem.cpp(41,43): warning C4018: '>': no coinciden signed/unsigned
-C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\GhostSystem.cpp(48,43): warning C4018: '>': no coinciden signed/unsigned
-C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\GhostSystem.cpp(97,27): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\GhostSystem.cpp(97,24): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\GhostSystem.cpp(49,44): warning C4018: '>': no coinciden signed/unsigned
+C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\GhostSystem.cpp(99,27): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\GhostSystem.cpp(99,24): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
 C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(51,32): warning C4101: 'e': variable local sin referencia
   (compilando archivo de origen "src/systems/GhostSystem.cpp")
   C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(51,32):
@@ -31,53 +20,7 @@ C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlut
           [
               T=Texture
           ]
-  		C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\GhostSystem.cpp(104,38):
+  		C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\GhostSystem.cpp(106,38):
   		vea la primera referencia a “SDLUtils::map_access_wrapper<Texture>::at” en “GhostSystem::addGhost”
   
-  PacManSystem.cpp
-C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\ImageWithFrames.h(9,7): warning C4099: 'Transform': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
-  (compilando archivo de origen "src/systems/PacManSystem.cpp")
-  C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\PacManSystem.h(7,8):
-  vea la declaración de 'Transform'
-  
-C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(51,32): warning C4101: 'e': variable local sin referencia
-  (compilando archivo de origen "src/systems/PacManSystem.cpp")
-  C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(51,32):
-  el contexto de creación de instancias de la plantilla (el más antiguo primero) es
-  	C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(199,30):
-  	Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
-  	C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(48,13):
-  	al compilar la función del miembro clase plantilla "T &SDLUtils::map_access_wrapper<T>::at(const std::string &)"
-          with
-          [
-              T=Texture
-          ]
-  		C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\PacManSystem.cpp(31,38):
-  		vea la primera referencia a “SDLUtils::map_access_wrapper<Texture>::at” en “PacManSystem::initSystem”
-  
-  RenderSystem.cpp
-C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\ImageWithFrames.h(9,7): warning C4099: 'Transform': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
-  (compilando archivo de origen "src/systems/RenderSystem.cpp")
-  C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\RenderSystem.h(7,8):
-  vea la declaración de 'Transform'
-  
-C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\RenderSystem.cpp(69,19): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\RenderSystem.cpp(68,18): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(51,32): warning C4101: 'e': variable local sin referencia
-  (compilando archivo de origen "src/systems/RenderSystem.cpp")
-  C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(51,32):
-  el contexto de creación de instancias de la plantilla (el más antiguo primero) es
-  	C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(199,30):
-  	Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
-  	C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(48,13):
-  	al compilar la función del miembro clase plantilla "T &SDLUtils::map_access_wrapper<T>::at(const std::string &)"
-          with
-          [
-              T=Texture
-          ]
-  		C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\RenderSystem.cpp(74,41):
-  		vea la primera referencia a “SDLUtils::map_access_wrapper<Texture>::at” en “RenderSystem::drawMsgs”
-  
-  Generando código...
-  LINK : no se encontró C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\bin\TPV2Debug.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
   TPV2.vcxproj -> C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\bin\TPV2Debug.exe

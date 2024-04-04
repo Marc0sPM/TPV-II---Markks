@@ -180,7 +180,7 @@
     <ClInclude Include="src\systems\GhostSystem.h">
       <Filter>Header Files\Systems</Filter>
     </ClInclude>
-    <ClInclude Include="U:\hlocal\TPV-II---Markks\P2\TPV2\TPV2\src\systems\FoodSystem.h">
+    <ClInclude Include="src\systems\FoodSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -239,7 +239,7 @@
     <ClCompile Include="src\systems\GhostSystem.cpp">
       <Filter>Source Files\Systems</Filter>
     </ClCompile>
-    <ClCompile Include="U:\hlocal\TPV-II---Markks\P2\TPV2\TPV2\src\systems\FoodSystem.cpp">
+    <ClCompile Include="src\systems\FoodSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

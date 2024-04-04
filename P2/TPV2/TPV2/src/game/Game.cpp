@@ -41,11 +41,11 @@ void Game::init() {
 
 	// add the systems
 	pacmanSys_ = mngr_->addSystem<PacManSystem>();
-	gameCtrlSys_ = mngr_->addSystem<GameCtrlSystem>();
 	renderSys_ = mngr_->addSystem<RenderSystem>();
 	collisionSys_ = mngr_->addSystem<CollisionsSystem>();
 	ghostSys_ = mngr_->addSystem<GhostSystem>();
 	foodSys_ = mngr_->addSystem<FoodSystem>();
+	gameCtrlSys_ = mngr_->addSystem<GameCtrlSystem>();
 }
 
 void Game::start() {

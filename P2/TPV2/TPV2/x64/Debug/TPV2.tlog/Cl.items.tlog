@@ -10,6 +10,7 @@ C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlut
 C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SoundEffect.cpp;C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\x64\Debug\SoundEffect.obj
 C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\Texture.cpp;C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\x64\Debug\Texture.obj
 C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\CollisionsSystem.cpp;C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\x64\Debug\CollisionsSystem.obj
+C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\FoodSystem.cpp;C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\x64\Debug\FoodSystem.obj
 C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\GameCtrlSystem.cpp;C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\x64\Debug\GameCtrlSystem.obj
 C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\GhostSystem.cpp;C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\x64\Debug\GhostSystem.obj
 C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\PacManSystem.cpp;C:\Users\mineg\OneDrive\Documentos\GitHub\TPV-II---Markks\P2\TPV2\TPV2\x64\Debug\PacManSystem.obj

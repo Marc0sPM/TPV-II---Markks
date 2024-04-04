@@ -34,28 +34,30 @@ void GhostSystem::recieve(const Message& m)
 	
 }
 
-void GhostSystem::update(){
+void GhostSystem::update() {
 	auto ghosts = mngr_->getEntities(ecs::grp::GHOST);
 	//cambio de direccion dependiendo del pacmany su posicion
 	auto pacmanTr = mngr_->getComponent<Transform>(mngr_->getHandler(ecs::hdlr::PACMAN));
-	if (sdlutils().virtualTimer().currTime() > lastTimeGotPacmanPos_ + 2000) {
-		for (auto g : ghosts) {
+	for (auto g : ghosts) {
+		int prob = rnd_.nextInt(0, 1000);
+
+		if (prob <= 5) {
 			calcVelFromPacman(g);
 		}
-		lastTimeGotPacmanPos_ = sdlutils().virtualTimer().currTime();
 	}
-	//generacion de fantasmas
-	if (sdlutils().virtualTimer().currTime() > lastTimeGeneratedGhost_ + 5000) {
-		if (ghosts.size() < 10) {
-			addGhost();
+		//generacion de fantasmas
+		if (sdlutils().virtualTimer().currTime() > lastTimeGeneratedGhost_ + 5000) {
+			if (ghosts.size() < 10) {
+				addGhost();
+			}
+			lastTimeGeneratedGhost_ = sdlutils().virtualTimer().currTime();
 		}
-		lastTimeGeneratedGhost_ = sdlutils().virtualTimer().currTime();
+		// update de fantasmas
+		for (auto g : ghosts) {
+			mngr_->update(g);
+		}
 	}
-	// update de fantasmas
-	for (auto g : ghosts) {
-		mngr_->update(g);
-	}
-}
+
 
 void GhostSystem::addGhost()
 {
