@@ -14,7 +14,7 @@ public:
 	void initSystem() override;
 	void recieve(const Message& m) override;
 	void update() override;
-
+	void removeFruit(ecs::entity_t f);
 
 private:
 

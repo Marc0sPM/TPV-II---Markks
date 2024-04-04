@@ -33,7 +33,7 @@ void GhostSystem::recieve(const Message& m)
 		addGhost();
 		break;
 	case _m_PACMAN_GHOST_COLLISION:
-		
+		removeGhost(m.pacman_ghost.ghost);
 		break;
 	}
 	
@@ -121,13 +121,14 @@ void GhostSystem::addGhost()
 
 void GhostSystem::removeGhost(ecs::entity_t g) {
 	if (canDie) {
-		mngr_->setAlive(g, false);
-		mngr_->refresh();
+		
 	}
 	else {
 		Message m;
 		m.id = _m_ROUND_OVER;
 	}
+	mngr_->setAlive(g, false);
+	mngr_->refresh();
 }
 
 void GhostSystem::calcVelFromPacman(ecs::entity_t g)

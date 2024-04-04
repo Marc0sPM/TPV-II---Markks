@@ -41,7 +41,12 @@ struct Message {
 		struct 
 		{
 			ecs::entity_t ghost;
-		};
+		}pacman_ghost;
 
+		// _m_PACMAN_FOOD_COLLISION
+		struct
+		{
+			ecs::entity_t fruit;
+		}pacman_food;
 	};
 };

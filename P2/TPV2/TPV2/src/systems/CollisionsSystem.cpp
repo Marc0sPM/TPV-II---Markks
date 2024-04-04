@@ -29,8 +29,8 @@ void CollisionsSystem::update() {
 	auto &gh = mngr_->getEntities(ecs::grp::GHOST);
 
 
-	auto n = gh.size();
-	for (auto i = 0u; i < n; i++) {
+	auto nG = gh.size();
+	for (auto i = 0u; i < nG; i++) {
 		auto g = gh[i];
 		if (mngr_->isAlive(g)) {
 			auto gTR = mngr_->getComponent<Transform>(g);
@@ -41,12 +41,29 @@ void CollisionsSystem::update() {
 
 				Message m;
 				m.id = _m_PACMAN_GHOST_COLLISION;
-				m.ghost = g;
+				m.pacman_ghost.ghost = g;
 				mngr_->send(m);
 			}
 		}
+	}
 
+	auto &fo = mngr_->getEntities(ecs::grp::FOOD);
 
+	auto nF = fo.size();
+	for (auto i = 0u; i < nF; i++) {
+		auto f = fo[i];
+		if (mngr_->isAlive(f)) {
+			auto fTR = mngr_->getComponent<Transform>(f);
+			if (Collisions::collides(
+				pTR->pos_, pTR->width_, pTR->height_, //
+				fTR->pos_, fTR->width_, fTR->height_)) {
+				Message m;
+				m.id = _m_PACMAN_FOOD_COLLISION;
+				m.pacman_food.fruit = f;
+				mngr_->send(m);
+			}
+			
+		}
 	}
 
 	// For safety, we traverse with a normal loop until the current size. In this

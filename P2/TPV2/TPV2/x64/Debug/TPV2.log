@@ -1,29 +1,4 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(517,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
-  ImageWithFrames.cpp
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\Transform.h(8,17): warning C4099: 'Transform': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\Transform.h(8,8): message : vea la declaración de 'Transform'
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\ImageWithFrames.cpp(51,4): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\ImageWithFrames.cpp(50,72): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\ImageWithFrames.cpp(50,66): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\ImageWithFrames.cpp(50,43): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-  Manager.cpp
-  Game.cpp
-  CollisionsSystem.cpp
-  FoodSystem.cpp
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\ImageWithFrames.h(9,16): warning C4099: 'Transform': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\Transform.h(8,8): message : vea la declaración de 'Transform'
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\FoodSystem.cpp(36,90): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\FoodSystem.cpp(36,56): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(51,32): warning C4101: 'e': variable local sin referencia
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(48,13): message : al compilar la función del miembro clase plantilla "T &SDLUtils::map_access_wrapper<T>::at(const std::string &)"
-          with
-          [
-              T=Texture
-          ]
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\FoodSystem.cpp(39,13): message : vea la primera referencia a “SDLUtils::map_access_wrapper<Texture>::at” en “FoodSystem::setFruits”
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(199,30): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
-  GameCtrlSystem.cpp
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\GameCtrlSystem.cpp(43,2): warning C4065: la instrucción switch contiene etiquetas 'default' pero no etiquetas 'case'
   GhostSystem.cpp
 C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\ImageWithFrames.h(9,16): warning C4099: 'Transform': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
 C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\GhostSystem.h(5,8): message : vea la declaración de 'Transform'
@@ -38,29 +13,4 @@ C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtil
           ]
 C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\GhostSystem.cpp(111,38): message : vea la primera referencia a “SDLUtils::map_access_wrapper<Texture>::at” en “GhostSystem::addGhost”
 C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(199,30): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
-  PacManSystem.cpp
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\ImageWithFrames.h(9,16): warning C4099: 'Transform': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\PacManSystem.h(7,8): message : vea la declaración de 'Transform'
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(51,32): warning C4101: 'e': variable local sin referencia
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(48,13): message : al compilar la función del miembro clase plantilla "T &SDLUtils::map_access_wrapper<T>::at(const std::string &)"
-          with
-          [
-              T=Texture
-          ]
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\PacManSystem.cpp(31,38): message : vea la primera referencia a “SDLUtils::map_access_wrapper<Texture>::at” en “PacManSystem::initSystem”
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(199,30): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
-  RenderSystem.cpp
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\components\ImageWithFrames.h(9,16): warning C4099: 'Transform': nombre de tipo visto anteriormente usando 'struct' ahora se ve usando 'class'
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\RenderSystem.h(7,8): message : vea la declaración de 'Transform'
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\RenderSystem.cpp(78,19): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\RenderSystem.cpp(77,18): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(51,32): warning C4101: 'e': variable local sin referencia
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(48,13): message : al compilar la función del miembro clase plantilla "T &SDLUtils::map_access_wrapper<T>::at(const std::string &)"
-          with
-          [
-              T=Texture
-          ]
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\systems\RenderSystem.cpp(83,41): message : vea la primera referencia a “SDLUtils::map_access_wrapper<Texture>::at” en “RenderSystem::drawMsgs”
-C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\TPV2\src\sdlutils\SDLUtils.h(199,30): message : Vea la referencia a la creación de una instancia de clase plantilla "SDLUtils::map_access_wrapper<Texture>" que se está compilando
-  Generando código...
   TPV2.vcxproj -> C:\Users\Mike\Documents\GitHub\TPV-II---Markks\P2\TPV2\bin\TPV2Debug.exe
