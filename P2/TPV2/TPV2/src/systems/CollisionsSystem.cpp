@@ -54,29 +54,5 @@ void CollisionsSystem::update() {
 	//	}
 	//}
 
-<<<<<<< Updated upstream
-=======
-	auto &ghosts = mngr_->getEntities(ecs::grp::GHOST);
-	auto n = ghosts.size();
-
-	for (auto i = 0; i < n; i++) {
-		auto g = ghosts[i];
-
-		if (mngr_->isAlive(g)) {
-			auto gTR = mngr_->addComponent<Transform>(g);
-
-			if (Collisions::collides(
-				pTR->pos_, pTR->width_, pTR->height_, //
-				gTR->pos_, gTR->width_, gTR->height_)) {
-
-				Message m;
-				m.id = _m_PACMAN_GHOST_COLLISION;
-				mngr_->send(m);
-				
-			}
-		}	
-	}
-
->>>>>>> Stashed changes
 }
 

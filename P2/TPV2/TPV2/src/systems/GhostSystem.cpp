@@ -30,13 +30,6 @@ void GhostSystem::recieve(const Message& m)
 		lastTimeGeneratedGhost_ = 0;
 		lastTimeGotPacmanPos_ = 0;
 		addGhost();
-<<<<<<< Updated upstream
-=======
-		break;
-	case _m_PACMAN_GHOST_COLLISION:
-		std::cout << "choca";
-		break;
->>>>>>> Stashed changes
 	}
 	
 }
