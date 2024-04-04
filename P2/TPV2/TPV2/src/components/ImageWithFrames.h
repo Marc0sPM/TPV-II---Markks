@@ -40,8 +40,6 @@ private:
 	int currFrameC_;
 	int x_;
 	int y_;
-	int w_;
-	int h_;
 	int frameWidth_;
 	int frameHeight_;
 	int srow_;
