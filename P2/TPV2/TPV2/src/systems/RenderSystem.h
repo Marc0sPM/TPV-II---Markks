@@ -20,6 +20,7 @@ private:
 	void drawPacMan();
 	void drawMsgs();
 	void drawGhost();
+	void drawFood();
 	void draw(Transform *tr, Texture *tex);
 };
 

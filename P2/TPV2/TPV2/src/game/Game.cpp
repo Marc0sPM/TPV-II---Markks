@@ -12,6 +12,7 @@
 #include "../systems/GhostSystem.h"
 #include "../utils/Vector2D.h"
 #include "../utils/Collisions.h"
+#include "../systems/FoodSystem.h"
 
 using ecs::Manager;
 
@@ -44,6 +45,7 @@ void Game::init() {
 	renderSys_ = mngr_->addSystem<RenderSystem>();
 	collisionSys_ = mngr_->addSystem<CollisionsSystem>();
 	ghostSys_ = mngr_->addSystem<GhostSystem>();
+	foodSys_ = mngr_->addSystem<FoodSystem>();
 }
 
 void Game::start() {
@@ -69,6 +71,8 @@ void Game::start() {
 		gameCtrlSys_->update();
 		collisionSys_->update();
 		ghostSys_->update();
+		foodSys_->update();
+
 		mngr_->refresh();
 
 		sdlutils().clearRenderer();

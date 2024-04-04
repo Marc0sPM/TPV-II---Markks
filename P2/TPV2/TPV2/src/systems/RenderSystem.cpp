@@ -26,6 +26,7 @@ void RenderSystem::update() {
 	drawStars();
 	drawPacMan();
 	drawGhost();
+	drawFood();
 }
 
 void RenderSystem::drawStars() {
@@ -42,6 +43,14 @@ void RenderSystem::drawGhost() {
 		//auto tr = mngr_->getComponent<Transform>(e);
 		mngr_->getComponent<ImageWithFrames>(e)->render();
 		//draw(tr, tex);
+	}
+}
+
+void RenderSystem::drawFood()
+{
+	for (auto e : mngr_->getEntities(ecs::grp::FOOD)) {
+		//auto tr = mngr_->getComponent<Transform>(e);
+		mngr_->getComponent<ImageWithFrames>(e)->render();
 	}
 }
 

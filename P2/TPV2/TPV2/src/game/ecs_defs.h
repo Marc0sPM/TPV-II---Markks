@@ -14,7 +14,8 @@
 // Groups list - must have at least one element
 //
 #define _GRPS_LIST_ \
-	GHOST
+	GHOST, \
+	FOOD
 
 // Handlers list - must have at least one element
 //
@@ -29,5 +30,6 @@
 	GHOST, \
 	RENDER, \
 	GAMECTRL, \
-	COLLISIONS
+	COLLISIONS, \
+	FOOD
 
