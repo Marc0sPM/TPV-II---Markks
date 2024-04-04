@@ -26,6 +26,5 @@ private:
 
 	Transform* ghTR_;
 	int lastTimeGeneratedGhost_;
-	int lastTimeGotPacmanPos_;
 	RandomNumberGenerator& rnd_;
 };

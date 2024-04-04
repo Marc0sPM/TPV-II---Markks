@@ -11,8 +11,8 @@
 GhostSystem::GhostSystem() :
 	ghTR_(nullptr), //
 	rnd_(sdlutils().rand()), //
-	lastTimeGeneratedGhost_(), //
-	lastTimeGotPacmanPos_(0) {
+	lastTimeGeneratedGhost_() //
+{
 
 }
 
@@ -28,8 +28,10 @@ void GhostSystem::recieve(const Message& m)
 	switch (m.id) {
 	case _m_ROUND_START:
 		lastTimeGeneratedGhost_ = 0;
-		lastTimeGotPacmanPos_ = 0;
 		addGhost();
+		break;
+	case _m_PACMAN_GHOST_COLLISION:
+		break;
 	}
 	
 }
@@ -38,12 +40,16 @@ void GhostSystem::update(){
 	auto ghosts = mngr_->getEntities(ecs::grp::GHOST);
 	//cambio de direccion dependiendo del pacmany su posicion
 	auto pacmanTr = mngr_->getComponent<Transform>(mngr_->getHandler(ecs::hdlr::PACMAN));
-	if (sdlutils().virtualTimer().currTime() > lastTimeGotPacmanPos_ + 2000) {
-		for (auto g : ghosts) {
+	
+	for (auto g : ghosts) {
+		int prob = rnd_.nextInt(0, 1000);
+
+		if (prob <= 5) {
 			calcVelFromPacman(g);
 		}
-		lastTimeGotPacmanPos_ = sdlutils().virtualTimer().currTime();
+		
 	}
+
 	//generacion de fantasmas
 	if (sdlutils().virtualTimer().currTime() > lastTimeGeneratedGhost_ + 5000) {
 		if (ghosts.size() < 10) {
