@@ -37,10 +37,9 @@ struct Message {
 			unsigned int n;
 		} create_stars_data;
 
-		// _m_PACMAN_GHOST_COLLISION
 		struct 
 		{
-			
+
 		};
 
 	};
