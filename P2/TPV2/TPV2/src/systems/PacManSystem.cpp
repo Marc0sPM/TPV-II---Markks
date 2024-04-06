@@ -10,7 +10,7 @@
 #include "../sdlutils/SDLUtils.h"
 
 PacManSystem::PacManSystem() :
-		pmTR_(nullptr) {
+		pmTR_(nullptr), inmunity(false), lifes() {
 }
 
 PacManSystem::~PacManSystem() {
@@ -35,6 +35,25 @@ void PacManSystem::initSystem() {
 		0, 0, //
 		4, 1
 	);
+}
+
+void PacManSystem::recieve(const Message& m) {
+	switch (m.id) {
+	case _m_NEW_GAME:
+		lifes = 3;
+		break;
+	case _m_ROUND_START:
+		lifes = m.round_start.lifes;
+		inmunity = m.round_start.inmunity;
+		break;
+
+	case _m_PACMAN_GHOST_COLLISION:
+		checkDead();
+		break;
+
+	default:
+		break;
+	}
 }
 
 void PacManSystem::update() {
@@ -88,4 +107,20 @@ void PacManSystem::update() {
 		pmTR_->vel_.set(0.0f, 0.0f);
 	}
 
+}
+
+void PacManSystem::checkDead() {
+	if (!inmunity) {
+		if (lifes > 0) {
+			Message m;
+			m.id = _m_ROUND_OVER;
+			m.round_over.lifes = lifes - 1;
+			mngr_->send(m);
+		}
+		else {
+			Message  m;
+			m.id = _m_GAME_OVER;
+			mngr_->send(m);
+		}
+	}
 }

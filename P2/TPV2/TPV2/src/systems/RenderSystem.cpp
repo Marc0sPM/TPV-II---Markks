@@ -27,6 +27,17 @@ void RenderSystem::update() {
 	drawPacMan();
 	drawGhost();
 	drawMsgs();
+	drawLifes();
+}
+
+void RenderSystem::recieve(const Message& m) {
+	switch (m.id) {
+	case _m_ROUND_START:
+		drawLifes();
+		break;
+	default:
+		break;
+	}
 }
 
 void RenderSystem::drawStars() {
@@ -52,6 +63,10 @@ void RenderSystem::drawFood()
 		//auto tr = mngr_->getComponent<Transform>(e);
 		mngr_->getComponent<ImageWithFrames>(e)->render();
 	}
+}
+
+void RenderSystem::drawLifes() {
+	//sdlutils().images().at("heart").render(0,0);
 }
 
 void RenderSystem::drawPacMan() {

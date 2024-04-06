@@ -14,8 +14,12 @@ public:
 	PacManSystem();
 	virtual ~PacManSystem();
 	void initSystem() override;
+	void recieve(const Message& m) override;
 	void update() override;
 private:
 	Transform *pmTR_;
+	bool inmunity;
+	int lifes;
+	void checkDead();
 };
 

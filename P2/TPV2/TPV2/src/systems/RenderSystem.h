@@ -15,12 +15,14 @@ public:
 	virtual ~RenderSystem();
 	void initSystem() override;
 	void update() override;
+	void recieve(const Message& m) override;
 private:
 	void drawStars();
 	void drawPacMan();
 	void drawMsgs();
 	void drawGhost();
 	void drawFood();
+	void drawLifes();
 	void draw(Transform *tr, Texture *tex);
 };
 

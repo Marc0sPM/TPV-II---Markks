@@ -27,15 +27,16 @@ struct Message {
 
 	union {
 
-		// _m_STAR_EATEN
+		// _m_ROUND_START
 		struct {
-			ecs::entity_t e;
-		} star_eaten_data;
+			int lifes;
+			bool inmunity;
+		}round_start;
 
-		// _m_CREATE_STARS
+		// _m_ROUND_END
 		struct {
-			unsigned int n;
-		} create_stars_data;
+			 int n;
+		}round_end;
 
 		// _m_PACMAN_GHOST_COLLISION
 		struct 
@@ -48,5 +49,23 @@ struct Message {
 		{
 			ecs::entity_t fruit;
 		}pacman_food;
+
+		// _m_ROUND_OVER
+		struct
+		{
+			int lifes;
+		}round_over;
+
+		// _m_INMUNITY_START
+		struct
+		{
+			bool canDie;
+		}inmunity_start;
+
+		// _m_INMUNITY_END
+		struct
+		{
+			bool canDie;
+		}inmunity_end;
 	};
 };

@@ -24,10 +24,9 @@ private:
 	/// </summary>
 	/// <param name="g">Ghost entity</param>
 	void calcVelFromPacman(ecs::entity_t g);
-
+	void vulnerable();
 	Transform* ghTR_;
 	int lastTimeGeneratedGhost_;
-	int lastTimeGotPacmanPos_;
 	RandomNumberGenerator& rnd_;
 	bool canDie;
 };

@@ -12,7 +12,6 @@ GhostSystem::GhostSystem() :
 	ghTR_(nullptr), //
 	rnd_(sdlutils().rand()), //
 	lastTimeGeneratedGhost_(), //
-	lastTimeGotPacmanPos_(0), //
 	canDie(false) {
 
 }
@@ -29,11 +28,18 @@ void GhostSystem::recieve(const Message& m)
 	switch (m.id) {
 	case _m_ROUND_START:
 		lastTimeGeneratedGhost_ = 0;
-		lastTimeGotPacmanPos_ = 0;
 		addGhost();
 		break;
 	case _m_PACMAN_GHOST_COLLISION:
 		removeGhost(m.pacman_ghost.ghost);
+		break;
+	case _m_IMMUNITY_START:
+		canDie = m.inmunity_start.canDie;
+		vulnerable();
+		break;
+	case _m_IMMUNITY_END:
+		canDie = m.inmunity_start.canDie;
+		vulnerable();
 		break;
 	}
 	
@@ -50,18 +56,18 @@ void GhostSystem::update() {
 			calcVelFromPacman(g);
 		}
 	}
-		//generacion de fantasmas
-		if (sdlutils().virtualTimer().currTime() > lastTimeGeneratedGhost_ + 5000) {
-			if (ghosts.size() < 10 && !canDie) {
-				addGhost();
-			}
-			lastTimeGeneratedGhost_ = sdlutils().virtualTimer().currTime();
+	//generacion de fantasmas
+	if (sdlutils().virtualTimer().currTime() > lastTimeGeneratedGhost_ + 5000) {
+		if (ghosts.size() < 10 && !canDie) {
+			addGhost();
 		}
-		// update de fantasmas
-		for (auto g : ghosts) {
-			mngr_->update(g);
-		}
+		lastTimeGeneratedGhost_ = sdlutils().virtualTimer().currTime();
 	}
+	// update de fantasmas
+	for (auto g : ghosts) {
+		mngr_->update(g);
+	}
+}
 
 
 void GhostSystem::addGhost()
@@ -106,17 +112,16 @@ void GhostSystem::addGhost()
 
 	ghTR->init(p, vel, s, s, 0.0f);
 
-	int color = rnd_.nextInt(0, 4);
+	//int color = rnd_.nextInt(0, 4);
 
 	mngr_->addComponent<ImageWithFrames>(g, &sdlutils().images().at("pacman"),
 		0, 0, //
 		0, 0, //
 		128, 128, //
-		0, 4 + color, //
+		0, 4, //
 		8, 1,
 		400
 	);
-
 }
 
 void GhostSystem::removeGhost(ecs::entity_t g) {
@@ -143,5 +148,40 @@ void GhostSystem::calcVelFromPacman(ecs::entity_t g)
 	std::cout << "GHOST VEL: " << gTR->vel_.getX() << " " << gTR->vel_.getY() << std::endl; */
 }
 
-
+void GhostSystem::vulnerable() {
+	if (canDie) {
+		auto ghosts = mngr_->getEntities(ecs::grp::GHOST);
+		int n = ghosts.size();
+		for (auto i = 0; i < n; i++) {
+			auto g = ghosts[i];
+			if (mngr_->isAlive(g)) {
+				mngr_->addComponent<ImageWithFrames>(g, &sdlutils().images().at("pacman"),
+					0, 0, //
+					0, 0, //
+					128, 128, //
+					6, 3, //
+					2, 1,
+					400
+				);
+			}
+		}
+	}
+	else {
+		auto ghosts = mngr_->getEntities(ecs::grp::GHOST);
+		int n = ghosts.size();
+		for (auto i = 0; i < n; i++) {
+			auto g = ghosts[i];
+			if (mngr_->isAlive(g)) {
+				mngr_->addComponent<ImageWithFrames>(g, &sdlutils().images().at("pacman"),
+					0, 0, //
+					0, 0, //
+					128, 128, //
+					0, 4, //
+					8, 1,
+					400
+				);
+			}
+		}
+	}
+}
 
