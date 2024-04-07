@@ -19,7 +19,8 @@ private:
 	ecs::System *ghostSys_;
 	ecs::System *renderSys_;
 	ecs::System *collisionSys_;
-	ecs::System* foodSys_;
+	ecs::System *foodSys_;
+	ecs::System* immunitySys_;
 
 };
 

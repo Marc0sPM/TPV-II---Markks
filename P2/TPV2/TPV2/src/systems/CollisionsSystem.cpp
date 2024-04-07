@@ -60,50 +60,21 @@ void CollisionsSystem::update() {
 				fTR->pos_, fTR->width_, fTR->height_)) {
 
 				//Si es milagrosa y esta en modo milagroso
-				auto mirFruit = mngr_->getComponent<MiracleFruit>(f);
-				if (mirFruit != nullptr) {
-					if (mirFruit->miracle) {
-						Message m;
-						m.id = _m_IMMUNITY_START;
-						mngr_->send(m);
-					}
-				}
 				Message m;
 				m.id = _m_PACMAN_FOOD_COLLISION;
+
+				auto mirFruit = mngr_->getComponent<MiracleFruit>(f);
+				if (mirFruit != nullptr) {
+					m.pacman_food.milagrosa = mirFruit->miracle;
+				}
+				else {
+					m.pacman_food.milagrosa = false;
+				}
 				m.pacman_food.fruit = f;
 				mngr_->send(m);
 			}
 			
 		}
 	}
-
-	// For safety, we traverse with a normal loop until the current size. In this
-	// particular case we could use a for-each loop since the list stars is not
-	// modified.
-	//
-	//auto &stars = mngr_->getEntities(ecs::grp::STARS);
-	//auto n = stars.size();
-	//for (auto i = 0u; i < n; i++) {
-	//	auto e = stars[i];
-	//	if (mngr_->isAlive(e)) { // if the star is active (it might have died in this frame)
-
-	//		// the Star's Transform
-	//		//
-	//		auto eTR = mngr_->getComponent<Transform>(e);
-
-	//		// check if PacMan collides with the Star (i.e., eat it)
-	//		if (Collisions::collides(			//
-	//				pTR->pos_, pTR->width_, pTR->height_, //
-	//				eTR->pos_, eTR->width_, eTR->height_)) {
-
-	//			Message m;
-	//			m.id = _m_STAR_EATEN;
-	//			m.star_eaten_data.e = e;
-	//			mngr_->send(m);
-
-	//		}
-	//	}
-	//}
-	
 }
 

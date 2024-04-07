@@ -10,6 +10,7 @@
 #include "../systems/PacManSystem.h"
 #include "../systems/RenderSystem.h"
 #include "../systems/GhostSystem.h"
+#include "../systems/ImmunitySystem.h"
 #include "../utils/Vector2D.h"
 #include "../utils/Collisions.h"
 #include "../systems/FoodSystem.h"
@@ -22,7 +23,8 @@ Game::Game() :
 		gameCtrlSys_(), //
 		ghostSys_(), //
 		renderSys_(), //
-		collisionSys_() {
+		collisionSys_(), //
+		immunitySys_() {
 
 }
 
@@ -45,6 +47,7 @@ void Game::init() {
 	collisionSys_ = mngr_->addSystem<CollisionsSystem>();
 	ghostSys_ = mngr_->addSystem<GhostSystem>();
 	foodSys_ = mngr_->addSystem<FoodSystem>();
+	immunitySys_ = mngr_->addSystem<ImmunitySystem>();
 	gameCtrlSys_ = mngr_->addSystem<GameCtrlSystem>();
 }
 
@@ -72,6 +75,7 @@ void Game::start() {
 		collisionSys_->update();
 		ghostSys_->update();
 		foodSys_->update();
+		immunitySys_->update();
 
 		mngr_->refresh();
 

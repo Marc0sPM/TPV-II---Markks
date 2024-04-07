@@ -14,7 +14,7 @@ void ImmunitySystem::recieve(const Message& m) {
 	switch (m.id) {
 	case _m_PACMAN_FOOD_COLLISION:
 		// comprueba si tiene inmunidad, si no, mira el mensaje. Si la tiene, no hace nada y no se acumula la inmunidad
-		if (!pacmanImmunity) {
+		if (!pacmanImmunity && m.pacman_food.milagrosa != NULL) {
 			pacmanImmunity = m.pacman_food.milagrosa;
 
 			// comprueba que el mensaje del choque con la fruta le aporte inmunidad y la activa
