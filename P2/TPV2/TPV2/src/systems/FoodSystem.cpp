@@ -21,8 +21,10 @@ void FoodSystem::recieve(const Message& m)
 	switch (m.id) {
 	case _m_ROUND_START:
 		setFruits();
+		break;
 	case _m_PACMAN_FOOD_COLLISION:
 		removeFruit(m.pacman_food.fruit);
+		break;
 	}
 }
 

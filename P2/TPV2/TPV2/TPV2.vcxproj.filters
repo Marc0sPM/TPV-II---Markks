@@ -198,6 +198,9 @@
     <ClInclude Include="src\game\PausedState.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
+    <ClInclude Include="src\game\NewGameState.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\json\JSONValue.cpp">
@@ -264,10 +267,13 @@
       <Filter>Source Files\Systems</Filter>
     </ClCompile>
     <ClCompile Include="src\game\RunningState.cpp">
-      <Filter>Source Files\Systems</Filter>
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="src\game\PausedState.cpp">
-      <Filter>Source Files\Systems</Filter>
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\NewGameState.cpp">
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -2,16 +2,14 @@
 
 #include "NewGameState.h"
 
+#include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
-#include "../sdlutils/macros.h"
 #include "../sdlutils/SDLUtils.h"
-#include "FighterFacade.h"
 #include "Game.h"
 
-NewGameState::NewGameState(FighterFacade *fighter_mngr) :
+NewGameState::NewGameState(ecs::Manager* mngr) :
 		msg_(sdlutils().msgs().at("newgame")), //
-		ihdlr(ih()), //
-		fighter_mngr_(fighter_mngr) {
+		ihdlr(ih()), mngr_(mngr) {
 	float x = (sdlutils().width() - msg_.width()) / 2;
 	float y = (sdlutils().height() - msg_.height()) / 2;
 	dest_ = build_sdlrect(x, y, msg_.width(), msg_.height());
@@ -25,7 +23,9 @@ void NewGameState::leave() {
 
 void NewGameState::update() {
 	if (ihdlr.keyDownEvent()) {
-		fighter_mngr_->reset_lives();
+		Message m;
+		m.id = _m_ROUND_START;
+		mngr_->send(m);
 		Game::instance()->setState(Game::NEWROUND);
 	}
 	sdlutils().clearRenderer();

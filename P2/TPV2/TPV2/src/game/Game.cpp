@@ -16,6 +16,7 @@
 #include "../systems/FoodSystem.h"
 #include "../game/RunningState.h"
 #include "../game/PausedState.h"
+#include "../game/NewGameState.h"
 
 using ecs::Manager;
 
@@ -62,9 +63,9 @@ void Game::init() {
 	// add the states
 	running_state_ = new RunningState(pacmanSys_, renderSys_, collisionSys_, ghostSys_, foodSys_, immunitySys_, gameCtrlSys_);
 	paused_state_ = new PausedState();
+	newgame_state_ = new NewGameState(mngr_);
 
-
-	current_state_ = running_state_;
+	current_state_ = newgame_state_;
 }
 
 void Game::start() {
@@ -93,7 +94,6 @@ void Game::start() {
 		foodSys_->update();
 		immunitySys_->update();*/
 
-		current_state_->update();
 
 		mngr_->refresh();
 
@@ -101,6 +101,7 @@ void Game::start() {
 
 		if (frameTime < 10)
 			SDL_Delay(10 - frameTime);
+		current_state_->update();
 	}
 
 }
