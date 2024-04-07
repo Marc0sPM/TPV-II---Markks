@@ -6,6 +6,7 @@
 #include "../ecs/Manager.h"
 #include "../utils/Collisions.h"
 #include "StarsSystem.h"
+#include "../components/MiracleFruit.h"
 
 CollisionsSystem::CollisionsSystem() {
 	// TODO Auto-generated constructor stub
@@ -57,6 +58,16 @@ void CollisionsSystem::update() {
 			if (Collisions::collides(
 				pTR->pos_, pTR->width_, pTR->height_, //
 				fTR->pos_, fTR->width_, fTR->height_)) {
+
+				//Si es milagrosa y esta en modo milagroso
+				auto mirFruit = mngr_->getComponent<MiracleFruit>(f);
+				if (mirFruit != nullptr) {
+					if (mirFruit->miracle) {
+						Message m;
+						m.id = _m_IMMUNITY_START;
+						mngr_->send(m);
+					}
+				}
 				Message m;
 				m.id = _m_PACMAN_FOOD_COLLISION;
 				m.pacman_food.fruit = f;
