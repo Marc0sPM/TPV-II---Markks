@@ -9,7 +9,8 @@
 	IMAGE, \
 	STARMOTION, \
 	POINTS, \
-	IMAGEWITHFRAMES
+	IMAGEWITHFRAMES, \
+	MIRACLEFRUIT
 
 // Groups list - must have at least one element
 //

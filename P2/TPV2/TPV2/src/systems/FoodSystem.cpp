@@ -3,6 +3,7 @@
 #include "../ecs/Manager.h"
 #include "../components/Transform.h"
 #include "../components/ImageWithFrames.h"
+#include "../components/MiracleFruit.h"
 
 FoodSystem::FoodSystem(int fRows, int fCols) :
 	fRows_(fRows), //
@@ -28,6 +29,11 @@ void FoodSystem::recieve(const Message& m)
 void FoodSystem::update()
 {
 	auto& fruits = mngr_->getEntities(ecs::grp::FOOD);
+
+	for (auto f : fruits) {
+		mngr_->update(f);
+	}
+
 	if (fruits.size() == 0) {
 		Message m;
 		m.id = _m_ROUND_OVER;
@@ -44,9 +50,10 @@ void FoodSystem::setFruits() {
 		for (int j = 0; j < fRows_; ++j) {
 			auto fruit = mngr_->addEntity(ecs::grp::FOOD);
 			auto fTR = mngr_->addComponent<Transform>(fruit);
-
-			Vector2D pos = Vector2D(sdlutils().width() / fCols_ * i, sdlutils().height() / fRows_ * j);
-			fTR->init(pos, Vector2D(), 50, 50, 0);
+			int w, h;
+			w = h = 30;
+			Vector2D pos = Vector2D(sdlutils().width() / fCols_ * i + w, sdlutils().height() / fRows_ * j + h);
+			fTR->init(pos, Vector2D(), w, h, 0);
 
 			auto img = mngr_->addComponent<ImageWithFrames>(fruit, &sdlutils().images().at("pacman"),
 				1, 1, //
@@ -55,6 +62,10 @@ void FoodSystem::setFruits() {
 				4, 1, //
 				1, 1
 			);
+
+			if (rnd_.nextInt(0, 10) == 2) {
+				mngr_->addComponent<MiracleFruit>(fruit, rnd_.nextInt(10, 21), rnd_.nextInt(1, 6));
+			}
 		}
 	}
 
