@@ -99,7 +99,7 @@ void RenderSystem::drawMsgs() {
 	scoreTex.render(dest);
 
 	// draw add stars message
-	sdlutils().msgs().at("addstars").render(10, 10);
+	//sdlutils().msgs().at("addstars").render(10, 10);
 
 }
 
