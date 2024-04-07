@@ -174,14 +174,17 @@
     <ClInclude Include="src\ecs\System.h">
       <Filter>Header Files\ecs</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\ImageWithFrames.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\systems\GhostSystem.h">
       <Filter>Header Files\Systems</Filter>
     </ClInclude>
     <ClInclude Include="src\systems\FoodSystem.h">
       <Filter>Header Files\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\ImageWithFrames.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\MiracleFruit.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -233,14 +236,17 @@
     <ClCompile Include="src\ecs\Manager.cpp">
       <Filter>Source Files\ecs</Filter>
     </ClCompile>
-    <ClCompile Include="src\components\ImageWithFrames.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\systems\GhostSystem.cpp">
       <Filter>Source Files\Systems</Filter>
     </ClCompile>
     <ClCompile Include="src\systems\FoodSystem.cpp">
       <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\ImageWithFrames.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\MiracleFruit.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

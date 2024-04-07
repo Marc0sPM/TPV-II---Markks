@@ -8,7 +8,7 @@ public:
 	__SYSID_DECL__(ecs::sys::FOOD)
 
 
-	FoodSystem(int fRows = 8, int fCols = 6);
+	FoodSystem(int fRows = 6, int fCols = 8);
 	virtual ~FoodSystem() {}
 
 	void initSystem() override;
