@@ -9,9 +9,9 @@
 #include "../utils/Singleton.h"
 
 class Game : public Singleton<Game> {
-	friend Singleton<Game>;
-public:
+	friend Singleton<Game> ;
 	Game();
+public:
 	virtual ~Game();
 	void init();
 	void start();

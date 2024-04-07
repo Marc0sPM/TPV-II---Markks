@@ -32,11 +32,17 @@ void RunningState::leave() {
 void RunningState::update() {
 	pacmanSys_->update();
 	ghostSys_->update();
-	renderSys_->update();
 	collisionSys_->update();
 	immunitySys_->update();
 	foodSys_->update();
 	gameCtrlSys_->update();
+	sdlutils().clearRenderer();
+	renderSys_->update();
+	sdlutils().presentRenderer();
+
+	if (ihdlr.keyDownEvent() && ihdlr.isKeyDown(SDL_SCANCODE_P)) {
+		Game::instance()->setState(Game::PAUSED);
+	}
 	
 }
 

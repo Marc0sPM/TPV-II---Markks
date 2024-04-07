@@ -15,6 +15,7 @@
 #include "../utils/Collisions.h"
 #include "../systems/FoodSystem.h"
 #include "../game/RunningState.h"
+#include "../game/PausedState.h"
 
 using ecs::Manager;
 
@@ -26,7 +27,13 @@ Game::Game() :
 		renderSys_(), //
 		collisionSys_(), //
 		immunitySys_(), // 
-		foodSys_() {
+		foodSys_(), //
+		current_state_(nullptr), //
+		paused_state_(nullptr), //
+		running_state_(nullptr), //
+		newgame_state_(nullptr), //
+		newround_state_(nullptr), //
+		gameover_state_(nullptr) {
 
 }
 
@@ -54,6 +61,9 @@ void Game::init() {
 
 	// add the states
 	running_state_ = new RunningState(pacmanSys_, renderSys_, collisionSys_, ghostSys_, foodSys_, immunitySys_, gameCtrlSys_);
+	paused_state_ = new PausedState();
+
+
 	current_state_ = running_state_;
 }
 
@@ -86,10 +96,6 @@ void Game::start() {
 		current_state_->update();
 
 		mngr_->refresh();
-
-		sdlutils().clearRenderer();
-		renderSys_->update();
-		sdlutils().presentRenderer();
 
 		Uint32 frameTime = sdlutils().currRealTime() - startTime;
 

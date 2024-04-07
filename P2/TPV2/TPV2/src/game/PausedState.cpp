@@ -19,6 +19,8 @@ PausedState::~PausedState() {
 
 void PausedState::enter() {
 	sdlutils().virtualTimer().pause();
+	msg_.render(dest_);
+	sdlutils().presentRenderer();
 }
 
 void PausedState::leave() {
@@ -29,8 +31,6 @@ void PausedState::update() {
 	if (ihdlr.keyDownEvent()) {
 		Game::instance()->setState(Game::RUNNING);
 	}
-	sdlutils().clearRenderer();
-	msg_.render(dest_);
-	sdlutils().presentRenderer();
+	
 }
 
