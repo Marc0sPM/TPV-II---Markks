@@ -24,7 +24,8 @@ Game::Game() :
 		ghostSys_(), //
 		renderSys_(), //
 		collisionSys_(), //
-		immunitySys_() {
+		immunitySys_(), // 
+		foodSys_() {
 
 }
 
