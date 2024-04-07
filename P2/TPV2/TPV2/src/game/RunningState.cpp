@@ -10,16 +10,17 @@
 
 #include "Game.h"
 
-RunningState::RunningState() :
+RunningState::RunningState(ecs::System* pacmanSys, ecs::System* renderSys, ecs::System* collisionSys, ecs::System* ghostSys, ecs::System* foodSys,
+	ecs::System* immunitySys, ecs::System* gameCtrlSys) :
 	ihdlr(ih()), //
 	mngr_(), //
-	pacmanSys_(), //
-	gameCtrlSys_(), //
-	ghostSys_(), //
-	renderSys_(), //
-	collisionSys_(), //
-	immunitySys_(), // 
-	foodSys_() {
+	pacmanSys_(pacmanSys), //
+	gameCtrlSys_(gameCtrlSys), //
+	ghostSys_(ghostSys), //
+	renderSys_(renderSys), //
+	collisionSys_(collisionSys), //
+	immunitySys_(immunitySys), // 
+	foodSys_(foodSys) {
 }
 
 RunningState::~RunningState() {

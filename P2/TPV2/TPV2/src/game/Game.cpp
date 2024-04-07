@@ -14,6 +14,7 @@
 #include "../utils/Vector2D.h"
 #include "../utils/Collisions.h"
 #include "../systems/FoodSystem.h"
+#include "../game/RunningState.h"
 
 using ecs::Manager;
 
@@ -50,6 +51,10 @@ void Game::init() {
 	foodSys_ = mngr_->addSystem<FoodSystem>();
 	immunitySys_ = mngr_->addSystem<ImmunitySystem>();
 	gameCtrlSys_ = mngr_->addSystem<GameCtrlSystem>();
+
+	// add the states
+	running_state_ = new RunningState(pacmanSys_, renderSys_, collisionSys_, ghostSys_, foodSys_, immunitySys_, gameCtrlSys_);
+	current_state_ = running_state_;
 }
 
 void Game::start() {
@@ -71,12 +76,14 @@ void Game::start() {
 		}
 
 
-		pacmanSys_->update();
+		/*pacmanSys_->update();
 		gameCtrlSys_->update();
 		collisionSys_->update();
 		ghostSys_->update();
 		foodSys_->update();
-		immunitySys_->update();
+		immunitySys_->update();*/
+
+		current_state_->update();
 
 		mngr_->refresh();
 
