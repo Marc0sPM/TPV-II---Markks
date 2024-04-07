@@ -83,6 +83,11 @@ public:
 		render(src, dest);
 	}
 
+	inline void render(int x, int y,int w, int h) {
+		SDL_Rect dest = { x, y, w, h };
+		render(dest);
+	}
+
 	// renders the complete texture at a destination rectangle (dest),
 	// with rotation
 	inline void render(const SDL_Rect &dest, float rotation) {

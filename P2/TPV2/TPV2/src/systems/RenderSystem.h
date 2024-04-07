@@ -24,5 +24,6 @@ private:
 	void drawFood();
 	void drawLifes();
 	void draw(Transform *tr, Texture *tex);
+	int lifes;
 };
 

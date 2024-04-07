@@ -11,7 +11,7 @@
 #include "../sdlutils/Texture.h"
 #include "GameCtrlSystem.h"
 
-RenderSystem::RenderSystem() {
+RenderSystem::RenderSystem(): lifes() {
 
 }
 
@@ -34,6 +34,7 @@ void RenderSystem::recieve(const Message& m) {
 	switch (m.id) {
 	case _m_ROUND_START:
 		drawLifes();
+		lifes = m.round_start.lifes;
 		break;
 	default:
 		break;
@@ -66,7 +67,10 @@ void RenderSystem::drawFood()
 }
 
 void RenderSystem::drawLifes() {
-	//sdlutils().images().at("heart").render(0,0);
+	Texture* l = &sdlutils().images().at("heart");
+	for (int i = 0; i < lifes; i++) {
+		l->render(40 * i, 0, 30, 30);
+	}
 }
 
 void RenderSystem::drawPacMan() {
