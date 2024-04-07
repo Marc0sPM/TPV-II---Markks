@@ -18,7 +18,7 @@ public:
 	void update() override;
 private:
 	Transform *pmTR_;
-	bool inmunity;
+	bool immunity;
 	int lifes;
 	void checkDead();
 };
