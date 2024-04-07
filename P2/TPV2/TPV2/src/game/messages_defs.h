@@ -30,7 +30,7 @@ struct Message {
 		// _m_ROUND_START
 		struct {
 			int lifes;
-			bool inmunity;
+			bool immunity;
 		}round_start;
 
 		// _m_ROUND_END
@@ -48,6 +48,7 @@ struct Message {
 		struct
 		{
 			ecs::entity_t fruit;
+			bool milagrosa;
 		}pacman_food;
 
 		// _m_ROUND_OVER
