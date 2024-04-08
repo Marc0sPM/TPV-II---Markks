@@ -72,6 +72,7 @@ void CollisionsSystem::update() {
 				}
 				m.pacman_food.fruit = f;
 				mngr_->send(m);
+				sdlutils().soundEffects().at("pacman_eat").play();
 			}
 			
 		}

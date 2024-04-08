@@ -30,9 +30,11 @@ void GameOverState::enter() {
 	auto mngr_ = Game::instance()->getMngr();
 	if (mngr_->getEntities(ecs::grp::FOOD).size() > 0) {
 		msg_ = &sdlutils().msgs().at("gameover_lost");
+		sdlutils().soundEffects().at("pacman_death").play();
 	}
 	else {
 		msg_ = &sdlutils().msgs().at("gameover_won");
+		sdlutils().soundEffects().at("pacman_won").play();
 	}
 
 	float x = (sdlutils().width() - msg_->width()) / 2;
