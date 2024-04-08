@@ -17,6 +17,7 @@ public:
 	void update() override;
 	void addGhost();
 	void removeGhost(ecs::entity_t g);
+	void removeAllGhosts();
 private:
 	/// <summary>
 	/// Calcula el vector velocidad del ghost respecto a la posicion

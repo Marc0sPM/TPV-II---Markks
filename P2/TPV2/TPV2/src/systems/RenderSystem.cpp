@@ -34,7 +34,7 @@ void RenderSystem::recieve(const Message& m) {
 	switch (m.id) {
 	case _m_ROUND_START:
 		drawLifes();
-		lifes = m.round_start.lifes;
+		lifes = m.round_over.lifes;
 		break;
 	default:
 		break;

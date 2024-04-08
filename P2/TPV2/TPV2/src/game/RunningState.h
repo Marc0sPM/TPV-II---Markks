@@ -9,7 +9,7 @@ class InputHandler;
 
 class RunningState: public GameState {
 public:
-	RunningState(ecs::System* pacmanSys, ecs::System* renderSys, ecs::System* collisionSys, ecs::System* ghostSys, ecs::System* foodSys,
+	RunningState( ecs::System* pacmanSys, ecs::System* renderSys, ecs::System* collisionSys, ecs::System* ghostSys, ecs::System* foodSys,
 		ecs::System* immunitySys, ecs::System* gameCtrlSys);
 	virtual ~RunningState();
 	void leave() override;

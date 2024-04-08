@@ -15,6 +15,10 @@ public:
 	virtual ~Game();
 	void init();
 	void start();
+	inline ecs::Manager* getMngr() {
+		return mngr_;
+	}
+
 	enum State {
 		RUNNING, PAUSED, NEWGAME, NEWROUND, GAMEOVER
 	};

@@ -17,6 +17,7 @@
 #include "../game/RunningState.h"
 #include "../game/PausedState.h"
 #include "../game/NewGameState.h"
+#include "../game/NewRoundState.h"
 
 using ecs::Manager;
 
@@ -63,7 +64,8 @@ void Game::init() {
 	// add the states
 	running_state_ = new RunningState(pacmanSys_, renderSys_, collisionSys_, ghostSys_, foodSys_, immunitySys_, gameCtrlSys_);
 	paused_state_ = new PausedState();
-	newgame_state_ = new NewGameState(mngr_);
+	newgame_state_ = new NewGameState();
+	newround_state_ = new NewRoundState();
 
 	current_state_ = newgame_state_;
 }

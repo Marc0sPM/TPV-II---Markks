@@ -26,8 +26,12 @@ void GhostSystem::initSystem(){
 void GhostSystem::recieve(const Message& m)
 {
 	switch (m.id) {
+	case _m_NEW_GAME:
+		removeAllGhosts();
+		break;
 	case _m_ROUND_START:
 		lastTimeGeneratedGhost_ = 0;
+		removeAllGhosts();
 		addGhost();
 		break;
 	case _m_PACMAN_GHOST_COLLISION:
@@ -131,6 +135,13 @@ void GhostSystem::removeGhost(ecs::entity_t g) {
 	else {
 		Message m;
 		m.id = _m_ROUND_OVER;
+	}
+}
+
+void GhostSystem::removeAllGhosts() {
+	auto ghosts = mngr_->getEntities(ecs::grp::GHOST);
+	for (auto e : ghosts) {
+		mngr_->setAlive(e, false);
 	}
 }
 

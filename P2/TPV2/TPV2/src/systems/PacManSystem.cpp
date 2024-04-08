@@ -43,10 +43,9 @@ void PacManSystem::recieve(const Message& m) {
 		lifes = 3;
 		break;
 	case _m_ROUND_START:
-		lifes = m.round_start.lifes;
-		immunity = m.round_start.immunity;
+		immunity = false;
+		resetPos();
 		break;
-
 	case _m_PACMAN_GHOST_COLLISION:
 		checkDead();
 		break;
@@ -114,7 +113,7 @@ void PacManSystem::checkDead() {
 		if (lifes > 0) {
 			Message m;
 			m.id = _m_ROUND_OVER;
-			m.round_over.lifes = lifes - 1;
+			lifes--;
 			mngr_->send(m);
 		}
 		else {
@@ -123,4 +122,10 @@ void PacManSystem::checkDead() {
 			mngr_->send(m);
 		}
 	}
+}
+
+void PacManSystem::resetPos() {
+	auto x = (sdlutils().width() - 50) / 2.0f;
+	auto y = (sdlutils().height() - 50) / 2.0f;
+	pmTR_->pos_.set(x, y);
 }

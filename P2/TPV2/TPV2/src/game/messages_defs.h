@@ -26,17 +26,21 @@ struct Message {
 	// every where.
 
 	union {
+		// _m_NEW_GAME
+		struct {
+
+		}new_game;
+
 
 		// _m_ROUND_START
 		struct {
-			int lifes;
-			bool immunity;
+
 		}round_start;
 
-		// _m_ROUND_END
+		// _m_ROUND_OVER
 		struct {
-			 int n;
-		}round_end;
+			int lifes;
+		}round_over;
 
 		// _m_PACMAN_GHOST_COLLISION
 		struct 
@@ -52,10 +56,10 @@ struct Message {
 		}pacman_food;
 
 		// _m_ROUND_OVER
-		struct
+		/*struct
 		{
-			int lifes;
-		}round_over;
+			
+		}round_over;*/
 
 		// _m_INMUNITY_START
 		struct

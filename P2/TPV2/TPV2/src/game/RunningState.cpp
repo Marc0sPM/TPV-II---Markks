@@ -10,7 +10,7 @@
 
 #include "Game.h"
 
-RunningState::RunningState(ecs::System* pacmanSys, ecs::System* renderSys, ecs::System* collisionSys, ecs::System* ghostSys, ecs::System* foodSys,
+RunningState::RunningState( ecs::System* pacmanSys, ecs::System* renderSys, ecs::System* collisionSys, ecs::System* ghostSys, ecs::System* foodSys,
 	ecs::System* immunitySys, ecs::System* gameCtrlSys) :
 	ihdlr(ih()), //
 	mngr_(), //
@@ -27,6 +27,11 @@ RunningState::~RunningState() {
 }
 
 void RunningState::leave() {
+	auto mngr = Game::instance()->getMngr();
+	Message m;
+	m.id = _m_ROUND_START;
+	//m.round_start.lifes; 
+	mngr_->send(m);
 }
 
 void RunningState::update() {
@@ -43,7 +48,6 @@ void RunningState::update() {
 	if (ihdlr.keyDownEvent() && ihdlr.isKeyDown(SDL_SCANCODE_P)) {
 		Game::instance()->setState(Game::PAUSED);
 	}
-	
 }
 
 void RunningState::enter() {

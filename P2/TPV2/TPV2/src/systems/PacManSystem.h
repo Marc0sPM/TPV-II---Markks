@@ -16,10 +16,12 @@ public:
 	void initSystem() override;
 	void recieve(const Message& m) override;
 	void update() override;
+	
 private:
 	Transform *pmTR_;
 	bool immunity;
 	int lifes;
 	void checkDead();
+	void resetPos();
 };
 

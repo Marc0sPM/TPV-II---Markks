@@ -7,13 +7,15 @@
 
 class Texture;
 class InputHandler;
-class NewGameState: public GameState {
+
+class NewRoundState: public GameState {
 public:
-	NewGameState();
-	virtual ~NewGameState();
+	NewRoundState();
+	virtual ~NewRoundState();
+	void enter() override;
 	void leave() override;
 	void update() override;
-	void enter() override;
+
 private:
 	Texture &msg_;
 	SDL_Rect dest_;
