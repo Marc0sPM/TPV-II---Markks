@@ -27,13 +27,13 @@ void GameOverState::update() {
 }
 
 void GameOverState::enter() {
-	auto mngr = Game::instance()->getMngr();
-	/*if (mngr->getEntities(ecs::grp::ASTEROIDS).size() > 0) {
+	auto mngr_ = Game::instance()->getMngr();
+	if (mngr_->getEntities(ecs::grp::FOOD).size() > 0) {
 		msg_ = &sdlutils().msgs().at("gameover_lost");
-	} else {
+	}
+	else {
 		msg_ = &sdlutils().msgs().at("gameover_won");
-	}*/
-	auto a = mngr->getSystem(ecs::sys::GAMECTRL)
+	}
 
 	float x = (sdlutils().width() - msg_->width()) / 2;
 	float y = (sdlutils().height() - msg_->height()) / 2;

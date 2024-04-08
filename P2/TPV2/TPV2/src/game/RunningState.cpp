@@ -27,11 +27,7 @@ RunningState::~RunningState() {
 }
 
 void RunningState::leave() {
-	auto mngr = Game::instance()->getMngr();
-	Message m;
-	m.id = _m_ROUND_START;
-	//m.round_start.lifes; 
-	mngr_->send(m);
+	
 }
 
 void RunningState::update() {
@@ -51,7 +47,5 @@ void RunningState::update() {
 }
 
 void RunningState::enter() {
-	
+
 }
-
-

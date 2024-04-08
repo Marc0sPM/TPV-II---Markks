@@ -15,9 +15,9 @@ public:
 	void recieve(const Message& m) override;
 	void update() override;
 	void removeFruit(ecs::entity_t f);
-
+	void removeAllFruits();
 private:
-
+	void resetMiracleFruits();
 	void setFruits();
 	int fCols_;
 	int fRows_;

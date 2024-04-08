@@ -20,7 +20,6 @@ public:
 private:
 	Transform *pmTR_;
 	bool immunity;
-	int lifes;
 	void checkDead();
 	void resetPos();
 };

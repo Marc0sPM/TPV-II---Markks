@@ -10,7 +10,8 @@
 	STARMOTION, \
 	POINTS, \
 	IMAGEWITHFRAMES, \
-	MIRACLEFRUIT
+	MIRACLEFRUIT, \
+	HEALTH
 
 // Groups list - must have at least one element
 //

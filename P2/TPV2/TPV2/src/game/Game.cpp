@@ -18,6 +18,7 @@
 #include "../game/PausedState.h"
 #include "../game/NewGameState.h"
 #include "../game/NewRoundState.h"
+#include "../game/GameOverState.h"
 
 using ecs::Manager;
 
@@ -66,6 +67,7 @@ void Game::init() {
 	paused_state_ = new PausedState();
 	newgame_state_ = new NewGameState();
 	newround_state_ = new NewRoundState();
+	gameover_state_ = new GameOverState();
 
 	current_state_ = newgame_state_;
 }
@@ -87,15 +89,6 @@ void Game::start() {
 			exit = true;
 			continue;
 		}
-
-
-		/*pacmanSys_->update();
-		gameCtrlSys_->update();
-		collisionSys_->update();
-		ghostSys_->update();
-		foodSys_->update();
-		immunitySys_->update();*/
-
 
 		mngr_->refresh();
 

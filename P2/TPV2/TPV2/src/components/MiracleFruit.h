@@ -21,6 +21,10 @@ struct MiracleFruit : public ecs::Component
 		lastTimeMiracled(0)
 	{}
 
+	virtual ~MiracleFruit() {
+
+	}
+
 	void initComponent() override {
 	}
 
@@ -38,6 +42,11 @@ struct MiracleFruit : public ecs::Component
 			miracle = true;
 			lastTimeMiracled = sdlutils().virtualTimer().currTime();
 		}
+	}
+
+	void resetFruit() {
+		miracle = false;
+		lastTimeMiracled = sdlutils().virtualTimer().currTime();
 	}
 };
 

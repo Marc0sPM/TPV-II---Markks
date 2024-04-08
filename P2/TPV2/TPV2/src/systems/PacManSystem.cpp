@@ -5,12 +5,13 @@
 #include "../components/Image.h"
 #include "../components/ImageWithFrames.h"
 #include "../components/Transform.h"
+#include "../components/HealthComponent.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
 #include "../sdlutils/SDLUtils.h"
 
 PacManSystem::PacManSystem() :
-		pmTR_(nullptr), immunity(false), lifes() {
+		pmTR_(nullptr), immunity(false) {
 }
 
 PacManSystem::~PacManSystem() {
@@ -35,19 +36,35 @@ void PacManSystem::initSystem() {
 		0, 0, //
 		4, 1
 	);
+
+	mngr_->addComponent<HealthComponent>(pacman, 3);
 }
 
 void PacManSystem::recieve(const Message& m) {
 	switch (m.id) {
 	case _m_NEW_GAME:
-		lifes = 3;
+		mngr_->getComponent<HealthComponent>(mngr_->getHandler(ecs::hdlr::PACMAN))->setLifes(3);
 		break;
 	case _m_ROUND_START:
 		immunity = false;
 		resetPos();
 		break;
+	case _m_IMMUNITY_START:
+		immunity = true;
+		break;
+	case _m_IMMUNITY_END:
+		immunity = false;
+		break;
 	case _m_PACMAN_GHOST_COLLISION:
-		checkDead();
+		if (immunity) {
+			Message m;
+			m.id = _m_ADD_SCORE;
+			m.add_score.score = 200;
+			mngr_->send(m);
+		}
+		else {
+			checkDead();
+		}
 		break;
 
 	default:
@@ -86,7 +103,7 @@ void PacManSystem::update() {
 	}
 
 	// move the pacman
-	pmTR_->pos_ = pmTR_->pos_ + pmTR_->vel_;
+	pmTR_->update();
 
 	// check left/right borders
 	if (pmTR_->pos_.getX() < 0) {
@@ -109,18 +126,17 @@ void PacManSystem::update() {
 }
 
 void PacManSystem::checkDead() {
-	if (!immunity) {
-		if (lifes > 0) {
-			Message m;
-			m.id = _m_ROUND_OVER;
-			lifes--;
-			mngr_->send(m);
-		}
-		else {
-			Message  m;
-			m.id = _m_GAME_OVER;
-			mngr_->send(m);
-		}
+	int &lifes = mngr_->getComponent<HealthComponent>(mngr_->getHandler(ecs::hdlr::PACMAN))->currLifes_;
+	lifes--;
+ 	if (lifes > 0) {
+		Message m;
+		m.id = _m_ROUND_OVER;
+		mngr_->send(m);
+	}
+	else {
+		Message  m;
+		m.id = _m_GAME_OVER;
+		mngr_->send(m);
 	}
 }
 
@@ -128,4 +144,6 @@ void PacManSystem::resetPos() {
 	auto x = (sdlutils().width() - 50) / 2.0f;
 	auto y = (sdlutils().height() - 50) / 2.0f;
 	pmTR_->pos_.set(x, y);
+
+	pmTR_->vel_ = Vector2D(0.0f, 0.0f);
 }

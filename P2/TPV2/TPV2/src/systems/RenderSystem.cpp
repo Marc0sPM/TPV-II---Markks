@@ -5,13 +5,14 @@
 #include "../components/Image.h"
 #include "../components/ImageWithFrames.h"
 #include "../components/Transform.h"
+#include "../components/HealthComponent.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/macros.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../sdlutils/Texture.h"
 #include "GameCtrlSystem.h"
 
-RenderSystem::RenderSystem(): lifes() {
+RenderSystem::RenderSystem(){
 
 }
 
@@ -33,8 +34,6 @@ void RenderSystem::update() {
 void RenderSystem::recieve(const Message& m) {
 	switch (m.id) {
 	case _m_ROUND_START:
-		drawLifes();
-		lifes = m.round_over.lifes;
 		break;
 	default:
 		break;
@@ -67,10 +66,9 @@ void RenderSystem::drawFood()
 }
 
 void RenderSystem::drawLifes() {
-	Texture* l = &sdlutils().images().at("heart");
-	for (int i = 0; i < lifes; i++) {
-		l->render(40 * i, 0, 30, 30);
-	}
+	auto e = mngr_->getHandler(ecs::hdlr::PACMAN);
+	auto h = mngr_->getComponent<HealthComponent>(e);
+	if (h != nullptr) h->render();
 }
 
 void RenderSystem::drawPacMan() {

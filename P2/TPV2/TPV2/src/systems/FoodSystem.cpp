@@ -13,14 +13,18 @@ FoodSystem::FoodSystem(int fRows, int fCols) :
 
 void FoodSystem::initSystem()
 {
-	setFruits();
+
 }
  
 void FoodSystem::recieve(const Message& m)
 {
 	switch (m.id) {
-	case _m_ROUND_START:
+	case _m_NEW_GAME: 
+		removeAllFruits();
 		setFruits();
+		break;
+	case _m_ROUND_START:
+		resetMiracleFruits();
 		break;
 	case _m_PACMAN_FOOD_COLLISION:
 		removeFruit(m.pacman_food.fruit);
@@ -30,21 +34,39 @@ void FoodSystem::recieve(const Message& m)
 
 void FoodSystem::update()
 {
-	auto& fruits = mngr_->getEntities(ecs::grp::FOOD);
+	auto fruits = mngr_->getEntities(ecs::grp::FOOD);
 
-	for (auto f : fruits) {
+	for (auto& f : fruits) {
 		mngr_->update(f);
 	}
 
 	if (fruits.size() == 0) {
 		Message m;
-		m.id = _m_ROUND_OVER;
+		m.id = _m_GAME_OVER;
 		mngr_->send(m);
 	}
 }
 
 void FoodSystem::removeFruit(ecs::entity_t f) {
 	mngr_->setAlive(f, false);
+}
+
+void FoodSystem::removeAllFruits()
+{
+	for (auto f : mngr_->getEntities(ecs::grp::FOOD)) {
+		mngr_->setAlive(f, false);
+	}
+}
+
+void FoodSystem::resetMiracleFruits()
+{
+	auto fruits = mngr_->getEntities(ecs::grp::FOOD);
+	for (auto& f : fruits) {
+		auto mF = mngr_->getComponent<MiracleFruit>(f);
+		if (mF != nullptr) {
+			mF->resetFruit();
+		}
+	}
 }
 
 void FoodSystem::setFruits() {

@@ -30,12 +30,14 @@ void GhostSystem::recieve(const Message& m)
 		removeAllGhosts();
 		break;
 	case _m_ROUND_START:
-		lastTimeGeneratedGhost_ = 0;
+		lastTimeGeneratedGhost_ = sdlutils().virtualTimer().currTime();
 		removeAllGhosts();
-		addGhost();
+		canDie = false;
+		//addGhost();
 		break;
 	case _m_PACMAN_GHOST_COLLISION:
-		removeGhost(m.pacman_ghost.ghost);
+		if(canDie)
+			removeGhost(m.pacman_ghost.ghost);
 		break;
 	case _m_IMMUNITY_START:
 		canDie = m.inmunity_start.canDie;
@@ -129,13 +131,7 @@ void GhostSystem::addGhost()
 }
 
 void GhostSystem::removeGhost(ecs::entity_t g) {
-	if (canDie) {
-		mngr_->setAlive(g, false);
-	}
-	else {
-		Message m;
-		m.id = _m_ROUND_OVER;
-	}
+	mngr_->setAlive(g, false);
 }
 
 void GhostSystem::removeAllGhosts() {
@@ -155,8 +151,6 @@ void GhostSystem::calcVelFromPacman(ecs::entity_t g)
 
 	endVel = Vector2D(pmTR->pos_ - gTR->pos_).normalize();
 	gTR->vel_ = endVel;
-	/*std::cout << "PACMAN POS: " << pmTR->pos_.getX() << " " << pmTR->pos_.getY() << std::endl;
-	std::cout << "GHOST VEL: " << gTR->vel_.getX() << " " << gTR->vel_.getY() << std::endl; */
 }
 
 void GhostSystem::vulnerable() {

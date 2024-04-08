@@ -13,7 +13,8 @@ enum msgId : msgId_type {
 	_m_PACMAN_FOOD_COLLISION,
 	_m_PACMAN_GHOST_COLLISION,
 	_m_IMMUNITY_START, 
-	_m_IMMUNITY_END
+	_m_IMMUNITY_END,
+	_m_ADD_SCORE
 
 };
 
@@ -26,6 +27,11 @@ struct Message {
 	// every where.
 
 	union {
+		// _m_ADD_SCORE
+		struct {
+			int score;
+		}add_score;
+
 		// _m_NEW_GAME
 		struct {
 
