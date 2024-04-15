@@ -19,6 +19,7 @@ NewGameState::~NewGameState() {
 }
 
 void NewGameState::leave() {
+	
 }
 
 void NewGameState::update() {
@@ -35,4 +36,5 @@ void NewGameState::update() {
 }
 
 void NewGameState::enter() {
+	sdlutils().musics().at("pacman_intro").play();
 }

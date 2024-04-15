@@ -27,7 +27,7 @@ RunningState::~RunningState() {
 }
 
 void RunningState::leave() {
-	
+	sdlutils().soundEffects().at("pacman_death").play();
 }
 
 void RunningState::update() {
@@ -47,5 +47,6 @@ void RunningState::update() {
 }
 
 void RunningState::enter() {
-
+	sdlutils().musics().at("pacman_chomp").play();
+	sdlutils().musics().at("pacman_chomp").pauseMusic();
 }

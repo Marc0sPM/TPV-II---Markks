@@ -18,6 +18,7 @@ NewRoundState::~NewRoundState() {
 }
 
 void NewRoundState::leave() {
+	sdlutils().musics().at("pacman_intro").haltMusic();
 }
 
 void NewRoundState::update() {

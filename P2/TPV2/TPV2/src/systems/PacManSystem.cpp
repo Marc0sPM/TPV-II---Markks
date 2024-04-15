@@ -95,7 +95,7 @@ void PacManSystem::update() {
 		} else if (ihldr.isKeyDown(SDL_SCANCODE_UP)) { // increase speed
 
 			pmTR_->vel_ = Vector2D(0.0f, -3.0f).rotate(pmTR_->rot_);
-			sdlutils().musics().at("pacman_chomp").play();
+			sdlutils().musics().at("pacman_chomp").resumeMusic();
 		} else if (ihldr.isKeyDown(SDL_SCANCODE_DOWN)) { // decrease speed
 			
 			pmTR_->vel_ = Vector2D(0, 0).rotate(pmTR_->rot_);
@@ -106,7 +106,6 @@ void PacManSystem::update() {
 
 	// move the pacman
 	pmTR_->update();
-	
 	// check left/right borders
 	if (pmTR_->pos_.getX() < 0) {
 		pmTR_->pos_.setX(0.1f);
