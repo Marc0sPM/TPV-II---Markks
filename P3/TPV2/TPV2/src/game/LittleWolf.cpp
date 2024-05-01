@@ -32,6 +32,27 @@ LittleWolf::~LittleWolf() {
 	// nothing to delete, the walling are delete in the Map's destructor
 }
 
+void LittleWolf::update_player_state(Uint8 id, float x, float y, float w, float h, float rot) {
+	Player &p = players_[id];
+	p.where.x = x;
+	p.where.y = y;
+	p.id = id;
+	p.theta = rot;
+
+	Game::instance()->get_networking().send_my_info(p.where,
+		p.theta, p.state);
+}
+
+void LittleWolf::update_player_info(Uint8 id, float x, float y, float w, float h, float rot, uint8_t state) {
+	Player& p = players_[id];
+
+	p.where.x = x;
+	p.where.y = y;
+	p.id = id;
+	p.theta = rot;
+	p.state = static_cast<PlayerState>(state);
+}
+
 void LittleWolf::update() {
 
 	Player &p = players_[player_id_];

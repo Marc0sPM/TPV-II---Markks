@@ -22,12 +22,16 @@ public:
 		return *little_wolf_;
 	}
 
+	Networking& get_networking() {
+		return *net_;
+	}
+
 
 private:
 
 	LittleWolf* little_wolf_;
 
-	Networking *net_;
+	Networking* net_;
 
 };
 

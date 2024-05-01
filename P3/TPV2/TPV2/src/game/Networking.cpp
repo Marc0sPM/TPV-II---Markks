@@ -4,11 +4,11 @@
 
 #include <iostream>
 
-#include "Bullets.h"
-#include "Fighter.h"
 #include "Game.h"
 #include "netwrok_messages.h"
 #include "../sdlutils/SDLNetUtils.h"
+#include "../utils/Vector2D.h"
+#include "LittleWolf.h"
 
 Networking::Networking() :
 		sock_(), //
@@ -167,7 +167,8 @@ void Networking::send_state(const Vector2D &pos, float w, float h, float rot) {
 void Networking::handle_player_state(const PlayerStateMsg &m) {
 
 	if (m._client_id != clientId_) {
-		
+		Game::instance()->get_littlewolf().update_player_state(m._client_id, m.x,
+			m.y, m.w, m.h, m.rot);
 	}
 }
 
@@ -218,7 +219,8 @@ void Networking::send_my_info(const Vector2D &pos, float w, float h, float rot,
 
 void Networking::handle_player_info(const PlayerInfoMsg &m) {
 	if (m._client_id != clientId_) {
-		
+		Game::instance()->get_littlewolf().update_player_info(m._client_id, m.x,
+			m.y, m.w, m.h, m.rot, m.state);
 	}
 }
 
