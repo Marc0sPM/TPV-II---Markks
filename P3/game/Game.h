@@ -7,8 +7,9 @@
 
 #include "../utils/Singleton.h"
 
+class Fighter;
+class Bullets;
 class Networking;
-class LittleWolf;
 
 class Game: public Singleton<Game> {
 	friend Singleton<Game> ;
@@ -18,15 +19,27 @@ public:
 	bool init(char *host, Uint16 port);
 	void start();
 
-	LittleWolf& get_littlewolf() {
-		return *little_wolf_;
+	Fighter& get_fighters() {
+		return *fighters_;
 	}
+
+	Bullets& get_bullets() {
+		return *bm_;
+	}
+
+	Networking& get_networking() {
+		return *net_;
+	}
+
 
 
 private:
 
-	LittleWolf* little_wolf_;
+	void check_collisions();
 
+
+	Bullets *bm_;
+	Fighter *fighters_;
 	Networking *net_;
 
 };

@@ -7,6 +7,7 @@
 #include "LittleWolf.h"
 
 
+
 Game::Game() :
 		little_wolf_(nullptr) //
 {

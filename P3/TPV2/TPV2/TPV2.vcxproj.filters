@@ -162,6 +162,15 @@
     <ClInclude Include="src\game\LittleWolf.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
+    <ClInclude Include="src\game\Networking.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\netwrok_messages.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\UDPServer.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\json\JSONValue.cpp">
@@ -205,6 +214,12 @@
     </ClCompile>
     <ClCompile Include="src\sdlutils\SDLNetUtils.cpp">
       <Filter>Source Files\sdlutil</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\Networking.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\UDPServer.cpp">
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
