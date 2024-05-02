@@ -64,7 +64,6 @@ void LittleWolf::update_player_info(Uint8 id, float x, float y, float rot, uint8
 	p.theta = rot;
 	p.state = static_cast<PlayerState>(state);
 
-	map_.walling[(int)p.where.y][(int)p.where.x] = player_to_tile(id);
 }
 
 void LittleWolf::update() {
@@ -168,6 +167,10 @@ void LittleWolf::load(std::string filename) {
 							map_.user_walling[i][j];
 				}
 
+}
+
+void LittleWolf::removePlayer(std::uint8_t id) {
+	players_[id].state = LittleWolf::NOT_USED;
 }
 
 bool LittleWolf::addPlayer(std::uint8_t id) {
