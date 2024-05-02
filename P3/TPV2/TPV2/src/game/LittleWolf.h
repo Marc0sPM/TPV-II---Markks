@@ -371,7 +371,7 @@ private:
 	// Some fields defining all elements of the world, etc
 
 	// maximum number of player
-	static constexpr uint8_t max_player = 10;
+	static constexpr uint8_t max_player = 4;
 
 	// Relation between window size and walling size
 	static constexpr uint8_t walling_size_factor = 2;
