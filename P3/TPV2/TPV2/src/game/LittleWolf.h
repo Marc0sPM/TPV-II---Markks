@@ -133,7 +133,7 @@ public:
 	// load a map from a file
 	void load(std::string filename);
 
-	void killPlayer();
+	void killPlayer(std::uint8_t id);
 
 	void removePlayer(std::uint8_t id);
 

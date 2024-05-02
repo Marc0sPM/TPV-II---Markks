@@ -232,5 +232,6 @@ void Networking::send_restart() {
 
 void Networking::handle_restart() {
 	// contador 5 seg y no se muevan
+	Game::instance()->get_littlewolf().bringAllToLife();
 
 }

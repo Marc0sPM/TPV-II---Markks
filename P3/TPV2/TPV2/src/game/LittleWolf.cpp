@@ -47,6 +47,7 @@ void LittleWolf::send_my_info() {
 
 void LittleWolf::update_player_state(Uint8 id, float x, float y, float rot) {
 	Player &p = players_[id];
+
 	p.where.x = x;
 	p.where.y = y;
 	p.id = id;
@@ -57,7 +58,6 @@ void LittleWolf::update_player_state(Uint8 id, float x, float y, float rot) {
 
 void LittleWolf::update_player_info(Uint8 id, float x, float y, float rot, uint8_t state) {
 	Player& p = players_[id];
-
 	p.where.x = x;
 	p.where.y = y;
 	p.id = id;
