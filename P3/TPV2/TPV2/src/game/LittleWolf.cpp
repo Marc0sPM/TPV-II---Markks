@@ -87,7 +87,7 @@ void LittleWolf::update() {
 
 
 	if (wait) {
-		if (Game::instance()->get_networking().is_master() && sdlutils().virtualTimer().currTime() > currT + 1000) {
+		if (sdlutils().virtualTimer().currTime() > currT + t) {
 			bringBackToLife();
 			wait = false;
 		}
