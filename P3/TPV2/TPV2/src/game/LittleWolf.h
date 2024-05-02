@@ -116,6 +116,14 @@ public:
 
 	void send_my_info();
 
+	int numPlayersAlive() {
+		int n = 0;
+		for (int i = 0u; i < max_player; i++) {
+			if (players_[i].state == ALIVE) n++;
+		}
+		return n;
+	}
+
 	void update_player_state(Uint8 id, float x, float y,
 		float rot);
 
@@ -124,6 +132,10 @@ public:
 	
 	// load a map from a file
 	void load(std::string filename);
+
+	void killPlayer();
+
+	void removePlayer(std::uint8_t id);
 
 	// add a new player with identifier <id>, returns false if the id is already occupied
 	bool addPlayer(std::uint8_t id);
@@ -348,6 +360,7 @@ private:
 		assert(tile >= 10);
 		return tile - 10;
 	}
+	
 
 	// Some fields defining all elements of the world, etc
 

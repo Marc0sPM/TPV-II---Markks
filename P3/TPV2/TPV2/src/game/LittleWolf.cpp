@@ -169,6 +169,10 @@ void LittleWolf::load(std::string filename) {
 
 }
 
+void LittleWolf::killPlayer(std::uint8_t id) {
+	players_[id].state = LittleWolf::DEAD;
+}
+
 void LittleWolf::removePlayer(std::uint8_t id) {
 	players_[id].state = LittleWolf::NOT_USED;
 }
@@ -408,7 +412,6 @@ void LittleWolf::render_players_info() {
 
 	for (auto i = 0u; i < max_player; i++) {
 		PlayerState s = players_[i].state;
-
 		// render player info if it is used
 		if (s != NOT_USED) {
 
