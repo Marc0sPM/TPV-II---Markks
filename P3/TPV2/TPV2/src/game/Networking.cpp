@@ -200,9 +200,9 @@ void Networking::send_dead(Uint8 id) {
 void Networking::handle_dead(const MsgWithId &m) {
 	Game::instance()->get_littlewolf().killPlayer(m._client_id);
 
-	if (Game::instance()->get_littlewolf().numPlayersAlive() <= 2) {
-		handle_restart();
-	}
+	//if (Game::instance()->get_littlewolf().numPlayersAlive() <= 2) {
+	//	handle_restart();
+	//}
 }
 
 void Networking::send_my_info(const Vector2D &pos, float rot,
@@ -232,6 +232,6 @@ void Networking::send_restart() {
 
 void Networking::handle_restart() {
 	// contador 5 seg y no se muevan
-	Game::instance()->get_littlewolf().bringAllToLife();
+	//Game::instance()->get_littlewolf().bringAllToLife();
 
 }

@@ -353,7 +353,6 @@ void LittleWolf::render_map(Player &p) {
 }
 
 void LittleWolf::render_upper_view() {
-
 	// lock texture
 	const Display display = lock(gpu_);
 	
@@ -527,7 +526,8 @@ bool LittleWolf::shoot(Player &p) {
 			// than shoot_distace, we mark the player as dead
 			if (hit.tile > 9 && mag(sub(p.where, hit.where)) < shoot_distace) {
 				uint8_t id = tile_to_player(hit.tile);
-				players_[id].state = DEAD;
+				//players_[id].state = DEAD;
+				Game::instance()->get_networking().send_dead(id);
 				sdlutils().soundEffects().at("pain").play();
 				return true;
 			}

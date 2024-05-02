@@ -116,10 +116,10 @@ public:
 
 	void send_my_info();
 
-	int numPlayersAlive() const{
+	int numPlayersAlive() const {
 		int n = 0;
-		for (int i = 0u; i < max_player; i++) {
-			if (players_[i].state == ALIVE) n++;
+		for (Uint8 id = 0u; id < max_player; id++) {
+			if (players_[id].state == ALIVE) n++;
 		}
 		return n;
 	}
