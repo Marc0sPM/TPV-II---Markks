@@ -124,12 +124,16 @@ public:
 		return n;
 	}
 
+	void restartMatch();
+
 	void update_player_state(Uint8 id, float x, float y,
 		float rot);
 
 	void update_player_info(Uint8 id, float x, float y,
 		float rot, uint8_t state);
 	
+	void update_new_info(Uint8 id, float x, float y);
+
 	// load a map from a file
 	void load(std::string filename);
 
@@ -142,6 +146,8 @@ public:
 
 	// mark all (used) player alive
 	void bringAllToLife();
+	
+	void bringBackToLife();
 
 	// switch to the view of the next player
 	void switchToNextPlayer();
@@ -388,6 +394,12 @@ private:
 
 	// the GPU structure with all the needed elements to draw the world
 	Gpu gpu_;
+
+	// for waiting to the restart
+	bool wait;
+	Uint32 t;
+	Uint32 currT;
+
 
 };
 

@@ -19,7 +19,10 @@ LittleWolf::LittleWolf(uint16_t xres, uint16_t yres, SDL_Window *window,
 				std::min(walling_width, walling_height) / 2), // the shoot distance -- not that it's wrt to the walling size
 		map_(), //
 		players_(), //
-		player_id_(0) { // we start with player 0
+		player_id_(0), //
+		wait(false), //
+		t(0),//
+		currT(0) { // we start with player 0
 
 	// for some reason it is created with a rotation of 90 degrees -- must be easier to
 	// manipulate coordinates
@@ -45,6 +48,12 @@ void LittleWolf::send_my_info() {
 		p.theta, p.state);
 }
 
+void LittleWolf::restartMatch() {
+	wait = true;
+	t = 5000;
+	currT = sdlutils().virtualTimer().currTime();
+}
+
 void LittleWolf::update_player_state(Uint8 id, float x, float y, float rot) {
 	Player &p = players_[id];
 	map_.walling[(int)p.where.y][(int)p.where.x] = 0;
@@ -66,18 +75,35 @@ void LittleWolf::update_player_info(Uint8 id, float x, float y, float rot, uint8
 
 }
 
+void LittleWolf::update_new_info(Uint8 id, float x, float y) {
+	Player& p = players_[id];
+	p.where.x = x;
+	p.where.y = y;
+}
+
 void LittleWolf::update() {
 
 	Player &p = players_[player_id_];
 
-	// dead player don't move/spin/shoot
-	if (p.state != ALIVE)
-		return;
 
-	spin(p);  // handle spinning
-	move(p);  // handle moving
-	shoot(p); // handle shooting
-	Game::instance()->get_networking().send_state( Vector2D{p.where.x, p.where.y}, p.theta);
+	if (wait) {
+		if (Game::instance()->get_networking().is_master() && sdlutils().virtualTimer().currTime() > currT + 1000) {
+			bringBackToLife();
+			wait = false;
+		}
+	}
+	else {
+		// dead player don't move/spin/shoot
+		if (p.state != ALIVE)
+			return;
+
+		spin(p);  // handle spinning
+		move(p);  // handle moving
+		shoot(p); // handle shooting
+		Game::instance()->get_networking().send_state( Vector2D{p.where.x, p.where.y}, p.theta);
+	}
+
+	
 }
 
 void LittleWolf::load(std::string filename) {
@@ -292,8 +318,8 @@ void LittleWolf::render_map(Player &p) {
 	// Ray cast for all columns of the window.
 	for (int x = 0; x < gpu_.xres; x++) {
 
-//		for (int y = 0; y < gpu_.yres; y++)
-//			put(display, x, y, 0x00000000);
+		for (int y = 0; y < gpu_.yres; y++)
+			put(display, x, y, 0x00000000);
 
 		// draw walls
 		const Point direction = lerp(camera, x / (float) gpu_.xres);
@@ -554,5 +580,45 @@ void LittleWolf::bringAllToLife() {
 		if (players_[i].state == DEAD) {
 			players_[i].state = ALIVE;
 		}
+	}
+}
+
+void LittleWolf::bringBackToLife() {
+	for (int i = 0; i < max_player; i++) {
+
+		if (players_[i].state != NOT_USED) {
+			auto& p = players_[i];
+
+			map_.walling[(int)p.where.y][(int)p.where.x] = 0;
+			auto& rand = sdlutils().rand();
+
+			// The search for an empty cell start at a random position (orow,ocol)
+			uint16_t orow = rand.nextInt(0, map_.walling_height);
+			uint16_t ocol = rand.nextInt(0, map_.walling_width);
+
+			// search for an empty cell
+			uint16_t row = orow;
+			uint16_t col = (ocol + 1) % map_.walling_width;
+			while (!((orow == row) && (ocol == col)) && map_.walling[row][col] != 0) {
+				col = (col + 1) % map_.user_walling_width;
+				if (col == 0)
+					row = (row + 1) % map_.walling_height;
+			}
+
+
+			p.where.x = col + 0.5f;
+			p.where.y = row + 0.5f;
+
+			p.velocity.x = 0;
+			p.velocity.y = 0;
+			p.theta = 0;
+			p.state = ALIVE;
+			
+			
+			Game::instance()->get_networking().send_new_info(p.id, Vector2D{ p.where.x, p.where.y });
+			map_.walling[(int)p.where.y][(int)p.where.x] = player_to_tile(i);
+		}
+
+
 	}
 }

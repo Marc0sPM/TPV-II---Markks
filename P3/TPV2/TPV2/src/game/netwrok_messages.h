@@ -16,12 +16,12 @@ enum MsgType : Uint8 {
 	_PLAYER_INFO, //
 	_SHOOT, //
 	_DEAD, //
-	_RESTART
+	_RESTART, //
+	_NEWINFO
 };
 
 struct Msg {
 	Uint8 _type;
-
 	_IMPL_SERIALIAZION_(_type)
 };
 
@@ -29,6 +29,13 @@ struct MsgWithId: Msg {
 	Uint8 _client_id;
 
 	_IMPL_SERIALIAZION_WITH_BASE_(Msg,_client_id)
+};
+
+struct MsgWithNewInfo : Msg {
+	Uint8 _client_id;
+	float _x;
+	float _y;
+	_IMPL_SERIALIAZION_WITH_BASE_(Msg, _client_id, _x, _y)
 };
 
 struct MsgWithMasterId: MsgWithId {

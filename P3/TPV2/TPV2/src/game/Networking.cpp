@@ -7,6 +7,7 @@
 #include "Game.h"
 #include "netwrok_messages.h"
 #include "../sdlutils/SDLNetUtils.h"
+#include "../sdlutils/SDLUtils.h"
 #include "../utils/Vector2D.h"
 #include "LittleWolf.h"
 
@@ -97,6 +98,8 @@ void Networking::update() {
 	ShootMsg m3;
 	MsgWithId m4;
 	PlayerInfoMsg m5;
+	MsgWithNewInfo m6;
+	Uint32 t;
 
 	while (SDLNetUtils::deserializedReceive(m0, p_, sock_) > 0) {
 
@@ -136,7 +139,10 @@ void Networking::update() {
 		case _RESTART:
 			handle_restart();
 			break;
-
+		case _NEWINFO:
+			m6.deserialize(p_->data);
+			handle_new_info(m6);
+			break;
 		default:
 			break;
 		}
@@ -199,10 +205,7 @@ void Networking::send_dead(Uint8 id) {
 
 void Networking::handle_dead(const MsgWithId &m) {
 	Game::instance()->get_littlewolf().killPlayer(m._client_id);
-
-	//if (Game::instance()->get_littlewolf().numPlayersAlive() <= 2) {
-	//	handle_restart();
-	//}
+	send_restart();
 }
 
 void Networking::send_my_info(const Vector2D &pos, float rot,
@@ -230,8 +233,21 @@ void Networking::send_restart() {
 	SDLNetUtils::serializedSend(m, p_, sock_, srvadd_);
 }
 
-void Networking::handle_restart() {
-	// contador 5 seg y no se muevan
-	//Game::instance()->get_littlewolf().bringAllToLife();
+void Networking::send_new_info(const Uint8 id, const Vector2D& pos) {
+	MsgWithNewInfo m;
+	m._client_id = id;
+	m._x = pos.getX();
+	m._y = pos.getY();
+	SDLNetUtils::serializedSend(m, p_, sock_, srvadd_);
+}
 
+
+
+void Networking::handle_restart() {
+	Game::instance()->get_littlewolf().restartMatch();
+
+}
+
+void Networking::handle_new_info(const MsgWithNewInfo& m) {
+	Game::instance()->get_littlewolf().update_new_info(m._client_id, m._x, m._y);
 }
