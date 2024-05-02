@@ -47,7 +47,7 @@ void LittleWolf::send_my_info() {
 
 void LittleWolf::update_player_state(Uint8 id, float x, float y, float rot) {
 	Player &p = players_[id];
-
+	map_.walling[(int)p.where.y][(int)p.where.x] = 0;
 	p.where.x = x;
 	p.where.y = y;
 	p.id = id;
