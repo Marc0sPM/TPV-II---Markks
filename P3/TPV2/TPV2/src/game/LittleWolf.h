@@ -114,10 +114,12 @@ public:
 			SDL_Renderer *render);
 	virtual ~LittleWolf();
 
-	void update_player_state(Uint8 id, float x, float y, float w, float h,
+	void send_my_info();
+
+	void update_player_state(Uint8 id, float x, float y,
 		float rot);
 
-	void update_player_info(Uint8 id, float x, float y, float w, float h,
+	void update_player_info(Uint8 id, float x, float y,
 		float rot, uint8_t state);
 	
 	// load a map from a file

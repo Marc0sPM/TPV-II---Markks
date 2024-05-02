@@ -2,6 +2,8 @@
 
 #include "LittleWolf.h"
 
+#include "Game.h"
+#include "Networking.h"
 #include <algorithm>
 #include <iostream>
 #include <fstream>
@@ -26,24 +28,34 @@ LittleWolf::LittleWolf(uint16_t xres, uint16_t yres, SDL_Window *window,
 
 	gpu_ = { window, render, texture, xres, yres };
 
+	for (auto i = 0u; i < max_player; i++) {
+		players_[i].state = NOT_USED;
+	}
+
 }
 
 LittleWolf::~LittleWolf() {
 	// nothing to delete, the walling are delete in the Map's destructor
 }
 
-void LittleWolf::update_player_state(Uint8 id, float x, float y, float w, float h, float rot) {
+void LittleWolf::send_my_info() {
+	Player& p = players_[player_id_];
+	
+	Game::instance()->get_networking().send_my_info(Vector2D{ p.where.x, p.where.y },
+		p.theta, p.state);
+}
+
+void LittleWolf::update_player_state(Uint8 id, float x, float y, float rot) {
 	Player &p = players_[id];
 	p.where.x = x;
 	p.where.y = y;
 	p.id = id;
 	p.theta = rot;
 
-	Game::instance()->get_networking().send_my_info(p.where,
-		p.theta, p.state);
+	map_.walling[(int)p.where.y][(int)p.where.x] = player_to_tile(id);
 }
 
-void LittleWolf::update_player_info(Uint8 id, float x, float y, float w, float h, float rot, uint8_t state) {
+void LittleWolf::update_player_info(Uint8 id, float x, float y, float rot, uint8_t state) {
 	Player& p = players_[id];
 
 	p.where.x = x;
@@ -51,6 +63,8 @@ void LittleWolf::update_player_info(Uint8 id, float x, float y, float w, float h
 	p.id = id;
 	p.theta = rot;
 	p.state = static_cast<PlayerState>(state);
+
+	map_.walling[(int)p.where.y][(int)p.where.x] = player_to_tile(id);
 }
 
 void LittleWolf::update() {
@@ -64,6 +78,7 @@ void LittleWolf::update() {
 	spin(p);  // handle spinning
 	move(p);  // handle moving
 	shoot(p); // handle shooting
+	Game::instance()->get_networking().send_state( Vector2D{p.where.x, p.where.y}, p.theta);
 }
 
 void LittleWolf::load(std::string filename) {
@@ -198,6 +213,7 @@ bool LittleWolf::addPlayer(std::uint8_t id) {
 	players_[id] = p;
 
 	player_id_ = id;
+	send_my_info();
 
 	return true;
 }
