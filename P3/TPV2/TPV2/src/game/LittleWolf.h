@@ -116,6 +116,8 @@ public:
 
 	void send_my_info();
 
+	void send_new_info();
+
 	int numPlayersAlive() const {
 		int n = 0;
 		for (Uint8 id = 0u; id < max_player; id++) {
@@ -130,7 +132,7 @@ public:
 		float rot);
 
 	void update_player_info(Uint8 id, float x, float y,
-		float rot, uint8_t state);
+		float rot, float velx, float vely, float speed, uint8_t state);
 	
 	void update_new_info(Uint8 id, float x, float y);
 

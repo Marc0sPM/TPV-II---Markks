@@ -224,7 +224,7 @@ void Networking::send_my_info(const Vector2D &pos, float rot,
 void Networking::handle_player_info(const PlayerInfoMsg &m) {
 	if (m._client_id != clientId_) {
 		Game::instance()->get_littlewolf().update_player_info(m._client_id, m.x,
-			m.y, m.rot, m.state);
+			m.y, m.rot, m.velx, m.vely, m.speed, m.state);
 	}
 }
 

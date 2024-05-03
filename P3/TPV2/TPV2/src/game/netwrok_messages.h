@@ -60,12 +60,13 @@ struct PlayerInfoMsg: MsgWithId {
 
 	float x;
 	float y;
-	int w;
-	int h;
+	float velx;
+	float vely;
+	float speed;
 	float rot;
 	Uint8 state;
 
-	_IMPL_SERIALIAZION_WITH_BASE_(MsgWithId, x,y,w,h,rot,state)
+	_IMPL_SERIALIAZION_WITH_BASE_(MsgWithId, x,y,velx,vely, speed, rot,state)
 
 };
 struct ShootMsg: MsgWithId {
