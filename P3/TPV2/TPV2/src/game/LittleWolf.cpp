@@ -73,44 +73,34 @@ void LittleWolf::update_player_state(Uint8 id, float x, float y, float rot) {
 
 void LittleWolf::update_player_info(Uint8 id, float x, float y, float rot, float velx, float vely, float speed, uint8_t state) {
 	{
-		//Player& p = players_[id];
-		//bool collision = false;
-
-		///*if (Game::instance()->get_networking().is_master()) {
-
-		//	const Point last = p.where, zero = { 0.0f, 0.0f };
-
-		//	if (tile(p.where, map_.walling) != player_to_tile(id)
-		//		&& tile(p.where, map_.walling) != 0) {
-
-		//		collision = true;
-
-		//		p.velocity = zero;
-		//		p.where = last;
-
-		//	}
-		//}*/
-		//if (!collision) {
-		//	// if there is no collision, it updates the new states/pos/rot of the player 
-		//	p.where.x = x;
-		//	p.where.y = y;
-		//	p.velocity = { velx,vely };
-		//	p.speed = speed;
-		//	p.id = id;
-		//	p.theta = rot;
-		//	p.state = static_cast<PlayerState>(state);
-		//}
-		//send_new_info(); // if there is any collision, it send the new info to the network
-
 		Player& p = players_[id];
 		bool collision = false;
-		p.where.x = x;
-		p.where.y = y;
-		p.velocity = { velx,vely };
-		p.speed = speed;
-		p.id = id;
-		p.theta = rot;
-		p.state = static_cast<PlayerState>(state);
+
+		if (Game::instance()->get_networking().is_master()) {
+
+			const Point last = p.where, zero = { 0.0f, 0.0f };
+
+			if (tile(p.where, map_.walling) != player_to_tile(id)
+				&& tile(p.where, map_.walling) != 0) {
+
+				collision = true;
+
+				p.velocity = zero;
+				p.where = last;
+
+			}
+		}
+		if (!collision) {
+			// if there is no collision, it updates the new states/pos/rot of the player 
+			p.where.x = x;
+			p.where.y = y;
+			p.velocity = { velx,vely };
+			p.speed = speed;
+			p.id = id;
+			p.theta = rot;
+			p.state = static_cast<PlayerState>(state);
+		}
+		send_new_info(); // if there is any collision, it send the new info to the network
 	}
 }
 void LittleWolf::update_new_info(Uint8 id, float x, float y) {
