@@ -79,6 +79,7 @@ void LittleWolf::update_new_info(Uint8 id, float x, float y) {
 	Player& p = players_[id];
 	p.where.x = x;
 	p.where.y = y;
+	p.id = id;
 	p.state = ALIVE;
 }
 
@@ -90,9 +91,9 @@ void LittleWolf::update() {
 	if (wait) {
 		if (sdlutils().virtualTimer().currTime() > currT + t) {
 
+			wait = false;
 			if(Game::instance()->get_networking().is_master())
 				bringBackToLife();
-			wait = false;
 		}
 	}
 	else {
@@ -609,7 +610,7 @@ void LittleWolf::bringBackToLife() {
 
 		auto& p = players_[i];
 
-		if (p.state == ALIVE || p.state == DEAD) {
+		if (p.state != NOT_USED) {
 			map_.walling[(int)p.where.y][(int)p.where.x] = 0;
 			auto& rand = sdlutils().rand();
 
@@ -635,7 +636,6 @@ void LittleWolf::bringBackToLife() {
 			p.theta = 0;
 			p.state = ALIVE;
 
-			// maybe this line is not necessary
 			Game::instance()->get_networking().send_new_info(p.id, Vector2D{ p.where.x, p.where.y });
 			map_.walling[(int)p.where.y][(int)p.where.x] = player_to_tile(i);
 		}

@@ -139,6 +139,7 @@ void Networking::update() {
 		case _RESTART:
 			handle_restart();
 			break;
+
 		case _NEWINFO:
 			m6.deserialize(p_->data);
 			handle_new_info(m6);
@@ -235,6 +236,7 @@ void Networking::send_restart() {
 
 void Networking::send_new_info(const Uint8 id, const Vector2D& pos) {
 	MsgWithNewInfo m;
+	m._type = _NEWINFO;
 	m._client_id = id;
 	m._x = pos.getX();
 	m._y = pos.getY();
