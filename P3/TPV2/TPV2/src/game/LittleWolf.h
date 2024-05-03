@@ -186,6 +186,8 @@ private:
 	// Render a list of current player
 	void render_players_info();
 
+	void render_wait();
+
 	// These are auxiliary function for vectors, colors, etc. All are from original littlewolf.
 
 	// Changes the field of view. A focal value of 1.0 is 90 degrees.

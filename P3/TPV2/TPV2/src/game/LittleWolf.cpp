@@ -264,6 +264,9 @@ void LittleWolf::render() {
 
 	// render the identifiers, state, etc
 	render_players_info();
+	if (wait) {
+		render_wait();
+	}
 }
 
 LittleWolf::Hit LittleWolf::cast(const Point where, Point direction,
@@ -457,6 +460,21 @@ void LittleWolf::render_players_info() {
 
 		}
 	}
+}
+
+void LittleWolf::render_wait() {
+	int time = (t + currT - sdlutils().virtualTimer().currTime())/1000;
+
+	std::string msg = ("The game will restart in ")
+		+ std::to_string(time) + (" seconds");
+
+	Texture info(sdlutils().renderer(), msg,
+		sdlutils().fonts().at("ARIAL24"),
+		build_sdlcolor(color_rgba(0)));
+
+	SDL_Rect dest = build_sdlrect(sdlutils().height() / 2, 0, info.width(), info.height());
+
+	info.render(dest);
 }
 
 void LittleWolf::move(Player &p) {
