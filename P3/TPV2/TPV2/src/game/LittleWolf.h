@@ -160,8 +160,9 @@ public:
 	// update the world, tec
 	void update();
 
+	void isShooting(Uint8 id);
 private:
-
+	void send_shoot();
 	// Calculates wall size using the <corrected> ray to the wall.
 	Wall project(const int xres, const int yres, const float focal,
 			const Point corrected);
@@ -401,6 +402,7 @@ private:
 
 	// for waiting to the restart
 	bool wait;
+	bool shooting;
 	Uint32 t;
 	Uint32 currT;
 

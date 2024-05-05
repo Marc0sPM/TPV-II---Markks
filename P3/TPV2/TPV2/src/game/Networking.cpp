@@ -177,23 +177,18 @@ void Networking::handle_player_state(const PlayerStateMsg &m) {
 	}
 }
 
-void Networking::send_shoot(Vector2D p, Vector2D v, int width, int height,
-		float r) {
+void Networking::send_shoot() {
 	ShootMsg m;
 	m._type = _SHOOT;
 	m._client_id = clientId_;
-	m.x = p.getX();
-	m.y = p.getY();
-	m.vx = v.getX();
-	m.vy = v.getY();
-	m.w = width;
-	m.h = height;
-	m.rot = r;
 	SDLNetUtils::serializedSend(m, p_, sock_, srvadd_);
+	
 }
 
 void Networking::handle_shoot(const ShootMsg &m) {
-
+	if (is_master()) {
+		Game::instance()->get_littlewolf().isShooting(m._client_id);
+	}
 
 }
 
