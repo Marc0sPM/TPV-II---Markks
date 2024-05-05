@@ -182,7 +182,6 @@ void Networking::send_shoot() {
 	m._type = _SHOOT;
 	m._client_id = clientId_;
 	SDLNetUtils::serializedSend(m, p_, sock_, srvadd_);
-	
 }
 
 void Networking::handle_shoot(const ShootMsg &m) {

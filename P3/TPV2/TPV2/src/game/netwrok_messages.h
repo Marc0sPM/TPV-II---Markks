@@ -70,12 +70,7 @@ struct PlayerInfoMsg: MsgWithId {
 
 };
 struct ShootMsg: MsgWithId {
-	Uint8 _client_id;
-	float x;
-	float y;
-
-	float rot;
-
-	_IMPL_SERIALIAZION_WITH_BASE_(MsgWithId, x,y,_client_id,rot)
+	
+	_IMPL_SERIALIAZION_WITH_BASE_(MsgWithId)
 
 };
