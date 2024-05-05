@@ -28,7 +28,7 @@ public:
 	void send_my_info(const Vector2D &pos, float rot,
 			Uint8 state);
 	
-	void send_shoot();
+	void send_shoot(Uint8 id);
 	void send_dead(Uint8 id);
 	void send_restart();
 	void send_new_info(const Uint8 id, const Vector2D& pos);

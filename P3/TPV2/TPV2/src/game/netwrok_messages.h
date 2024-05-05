@@ -70,7 +70,6 @@ struct PlayerInfoMsg: MsgWithId {
 
 };
 struct ShootMsg: MsgWithId {
-	
 	_IMPL_SERIALIAZION_WITH_BASE_(MsgWithId)
 
 };

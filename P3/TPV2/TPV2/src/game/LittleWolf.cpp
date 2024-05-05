@@ -136,7 +136,7 @@ void LittleWolf::update() {
 
 		// Space shoot -- we use keyDownEvent to force a complete press/release for each bullet
 		if (ih().keyDownEvent() && ih().isKeyDown(SDL_SCANCODE_SPACE)) {
-			send_shoot();
+			send_shoot(p.id);
 		}
 		Game::instance()->get_networking().send_state( Vector2D{p.where.x, p.where.y}, p.theta);
 	}
@@ -343,8 +343,8 @@ LittleWolf::Hit LittleWolf::cast(const Point where, Point direction,
 	}
 }
 
-void LittleWolf::send_shoot() {
-	Game::instance()->get_networking().send_shoot();
+void LittleWolf::send_shoot(Uint8 id) {
+	Game::instance()->get_networking().send_shoot(id);
 }
 
 LittleWolf::Wall LittleWolf::project(const int xres, const int yres,
@@ -591,9 +591,8 @@ void LittleWolf::spin(Player &p) {
 		p.theta += d;
 }
 
-bool LittleWolf::shoot(Player &p) {
+bool LittleWolf::shoot(Player& p) {
 	auto &ihdrl = ih();
-
 	// play gun shot sound
 	sdlutils().soundEffects().at("gunshot").play();
 

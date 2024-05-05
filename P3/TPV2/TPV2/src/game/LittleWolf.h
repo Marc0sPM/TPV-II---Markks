@@ -162,7 +162,7 @@ public:
 
 	void isShooting(Uint8 id);
 private:
-	void send_shoot();
+	void send_shoot(Uint8 id);
 	// Calculates wall size using the <corrected> ray to the wall.
 	Wall project(const int xres, const int yres, const float focal,
 			const Point corrected);
