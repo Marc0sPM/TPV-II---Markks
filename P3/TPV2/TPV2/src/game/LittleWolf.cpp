@@ -22,8 +22,7 @@ LittleWolf::LittleWolf(uint16_t xres, uint16_t yres, SDL_Window *window,
 		player_id_(0), //
 		wait(false), //
 		t(0),//
-		currT(0), //
-		shooting(false){ // we start with player 0
+		currT(0) { // we start with player 0
 
 	// for some reason it is created with a rotation of 90 degrees -- must be easier to
 	// manipulate coordinates
@@ -136,7 +135,8 @@ void LittleWolf::update() {
 
 		// Space shoot -- we use keyDownEvent to force a complete press/release for each bullet
 		if (ih().keyDownEvent() && ih().isKeyDown(SDL_SCANCODE_SPACE)) {
-			send_shoot(p.id);
+			//send_shoot(p.id);
+			shoot(p);
 		}
 		Game::instance()->get_networking().send_state( Vector2D{p.where.x, p.where.y}, p.theta);
 	}
@@ -289,7 +289,6 @@ bool LittleWolf::addPlayer(std::uint8_t id) {
 
 	player_id_ = id;
 	send_my_info();
-
 	return true;
 }
 
@@ -616,11 +615,26 @@ bool LittleWolf::shoot(Player& p) {
 			//players_[id].state = DEAD;
 			Game::instance()->get_networking().send_dead(id);
 			sdlutils().soundEffects().at("pain").play();
+			
+			// if players alive <= 2, it restart the game
+			if(checkRestart())
+				Game::instance()->get_networking().send_restart();
+			
 			return true;
 		}
 	}
 	
 	return false;
+}
+
+bool LittleWolf::checkRestart() {
+	int alive = 0;
+	for (int id = 0; id < max_player; id++) {
+		if (players_[id].state == ALIVE) {
+			alive++;
+		}
+	}
+	return alive <= 3;
 }
 
 void LittleWolf::switchToNextPlayer() {

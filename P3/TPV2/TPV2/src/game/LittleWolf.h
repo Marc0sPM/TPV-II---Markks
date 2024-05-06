@@ -118,14 +118,6 @@ public:
 
 	void send_new_info();
 
-	int numPlayersAlive() const {
-		int n = 0;
-		for (Uint8 id = 0u; id < max_player; id++) {
-			if (players_[id].state == ALIVE) n++;
-		}
-		return n;
-	}
-
 	void restartMatch();
 
 	void update_player_state(Uint8 id, float x, float y,
@@ -174,6 +166,7 @@ private:
 	// Moves the player when w,a,s,d are held down. Handles collision detection for the walls.
 	bool shoot(Player &p);
 
+	bool checkRestart();
 	// Spins the player when keys grid_h,l are held down. When left-shit is held down the move is slower
 	inline void spin(Player &p);
 
@@ -402,7 +395,6 @@ private:
 
 	// for waiting to the restart
 	bool wait;
-	bool shooting;
 	Uint32 t;
 	Uint32 currT;
 

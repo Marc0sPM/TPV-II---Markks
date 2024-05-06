@@ -198,7 +198,6 @@ void Networking::send_dead(Uint8 id) {
 
 void Networking::handle_dead(const MsgWithId &m) {
 	Game::instance()->get_littlewolf().killPlayer(m._client_id);
-	send_restart();
 }
 
 void Networking::send_my_info(const Vector2D &pos, float rot,
@@ -238,8 +237,7 @@ void Networking::send_new_info(const Uint8 id, const Vector2D& pos) {
 
 
 void Networking::handle_restart() {
-	Game::instance()->get_littlewolf().restartMatch();
-
+		Game::instance()->get_littlewolf().restartMatch();
 }
 
 void Networking::handle_new_info(const MsgWithNewInfo& m) {

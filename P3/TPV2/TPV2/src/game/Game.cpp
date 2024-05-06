@@ -61,16 +61,6 @@ void Game::start() {
 				continue;
 			}
 
-			// N switches to the next player view
-			if (ihdlr.isKeyDown(SDL_SCANCODE_N)) {
-				little_wolf_->switchToNextPlayer();
-			}
-
-			// R brings deads to life
-			if (ihdlr.isKeyDown(SDL_SCANCODE_R)) {
-				little_wolf_->bringAllToLife();
-			}
-
 		}
 
 		little_wolf_->update();
