@@ -62,14 +62,6 @@ void CollisionsSystem::update() {
 				//Si es milagrosa y esta en modo milagroso
 				Message m;
 				m.id = _m_PACMAN_FOOD_COLLISION;
-
-				auto mirFruit = mngr_->getComponent<MiracleFruit>(f);
-				if (mirFruit != nullptr) {
-					m.pacman_food.milagrosa = mirFruit->miracle;
-				}
-				else {
-					m.pacman_food.milagrosa = false;
-				}
 				m.pacman_food.fruit = f;
 				mngr_->send(m);
 				sdlutils().soundEffects().at("pacman_eat").play();

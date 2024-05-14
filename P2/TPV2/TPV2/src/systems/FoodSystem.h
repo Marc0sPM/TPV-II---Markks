@@ -16,6 +16,7 @@ public:
 	void update() override;
 	void removeFruit(ecs::entity_t f);
 	void removeAllFruits();
+	void checkTypeFruit(ecs::entity_t fruit);
 private:
 	void resetMiracleFruits();
 	void setFruits();

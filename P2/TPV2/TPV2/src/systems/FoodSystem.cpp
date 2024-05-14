@@ -27,6 +27,7 @@ void FoodSystem::recieve(const Message& m)
 		resetMiracleFruits();
 		break;
 	case _m_PACMAN_FOOD_COLLISION:
+		checkTypeFruit(m.pacman_food.fruit);
 		removeFruit(m.pacman_food.fruit);
 		break;
 	}
@@ -56,6 +57,22 @@ void FoodSystem::removeAllFruits()
 	for (auto f : mngr_->getEntities(ecs::grp::FOOD)) {
 		mngr_->setAlive(f, false);
 	}
+}
+
+void FoodSystem::checkTypeFruit(ecs::entity_t fruit) {
+	auto mirFruit = mngr_->getComponent<MiracleFruit>(fruit);
+	Message m;
+	m.id = _m_PACMAN_CHECK_INMUNITY;
+	m.pacman_check_inmunity.fruit = fruit;
+
+	if (mirFruit != nullptr) {
+		m.pacman_check_inmunity.milagrosa = mirFruit->miracle;
+	}
+	else {
+		m.pacman_check_inmunity.milagrosa = false;
+	}
+
+	mngr_->send(m);
 }
 
 void FoodSystem::resetMiracleFruits()

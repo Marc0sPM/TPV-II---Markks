@@ -11,6 +11,7 @@ enum msgId : msgId_type {
 	_m_ROUND_OVER, 
 	_m_GAME_OVER,
 	_m_PACMAN_FOOD_COLLISION,
+	_m_PACMAN_CHECK_INMUNITY,
 	_m_PACMAN_GHOST_COLLISION,
 	_m_IMMUNITY_START, 
 	_m_IMMUNITY_END,
@@ -60,6 +61,13 @@ struct Message {
 			ecs::entity_t fruit;
 			bool milagrosa;
 		}pacman_food;
+
+		// _m_PACMAN_CHECK_INMUNITY
+		struct
+		{
+			ecs::entity_t fruit;
+			bool milagrosa;
+		}pacman_check_inmunity;
 
 		// _m_ROUND_OVER
 		/*struct
